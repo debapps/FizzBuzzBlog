@@ -19,12 +19,12 @@ export default async function handler(req, res) {
 
       // Sent the success message as a response.
       if (saveBlog) {
-        res
+        return res
           .status(200)
           .json({ success: true, message: "Blog saved successfully." });
       }
     } catch (error) {
-      res.status(500).json({ message: error.message });
+      return res.status(500).json({ message: error.message });
     }
   }
 }

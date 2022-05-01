@@ -7,8 +7,8 @@ const nextConfig = {
     path: "",
   },
 
-  basePath: "/Responsive-Navbar",
-  assetPrefix: "/Responsive-Navbar",
+  // basePath: "/",
+  // assetPrefix: "/",
 };
 
 module.exports = nextConfig;

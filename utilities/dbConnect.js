@@ -1,15 +1,24 @@
 import mongoose from "mongoose";
 
-export default function mongoConnect() {
-  // Get the MongoDB URL from environment variable.
-  const mongoURL = process.env.DEV_MONGO_URI + process.env.DEV_DB_NAME;
+// Connection object initialize.
+let connection = {};
 
-  // Connect to MongoDB.
-  mongoose.connect(mongoURL, (err) => {
-    if (!err) {
+export default async function mongoConnect() {
+  if (connection.isConnected) {
+    return true;
+  } else {
+    try {
+      // Get the MongoDB URL from environment variable.
+      const mongoURL = process.env.DEV_MONGO_URI + process.env.DEV_DB_NAME;
+
+      // Connect to MongoDB.
+      let con = await mongoose.connect(mongoURL);
+      connection.isConnected = con.connections[0].readyState;
       console.log(
         "Connected to MongoDB: DataBase -  " + process.env.DEV_DB_NAME
       );
+    } catch (error) {
+      console.log("Error in connecting MongoDB.");
     }
-  });
+  }
 }

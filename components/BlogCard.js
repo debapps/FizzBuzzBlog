@@ -24,7 +24,7 @@ export default function BlogCard(props) {
           {introduction.slice(0, 80)}...
         </p>
         <Link href={`/blogpost/${_id}`} passHref>
-          <a className="border-2 border-black block w-fit mt-2 p-2 rounded-lg text-white bg-slate-600 hover:bg-slate-400">
+          <a className="border-2 hover:border-black block w-fit mt-2 p-2 rounded-lg text-white bg-indigo-500 hover:bg-indigo-400">
             Read Blog
           </a>
         </Link>

@@ -6,19 +6,19 @@ import { BsGithub } from "react-icons/bs";
 
 export default function Footer() {
   return (
-    <footer className="text-gray-600 body-font fixed bottom-0 w-full border-2">
+    <footer className="text-gray-600 body-font w-full border-2">
       <div className="container px-5 py-5 mx-auto flex items-center sm:flex-row flex-col">
         <Link href={"/"} passHref>
           <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
             <Image
-              src={"/FizzBuzzLogo.png"}
+              src={"/image/FizzBuzzLogo.png"}
               alt="FizzBuzzLogo"
               width={50}
               height={50}
               className="rounded-full"
             ></Image>
             <span className="ml-3 text-xl text-emerald-500 hover:text-yellow-500">
-              FizzBuzz Blog
+              FizzBuzz
             </span>
           </a>
         </Link>

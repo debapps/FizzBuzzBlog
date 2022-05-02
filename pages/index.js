@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
+import HeroElement from "../components/HeroElement";
+import LatestContent from "../components/LatestContent";
 
 export default function Home() {
   return (
@@ -30,8 +32,10 @@ export default function Home() {
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
-
-      <h1 className="text-3xl font-bold underline">FizzBuzz!</h1>
+      <main>
+        <HeroElement />
+        <LatestContent />
+      </main>
     </div>
   );
 }

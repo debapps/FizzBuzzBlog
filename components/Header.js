@@ -24,14 +24,14 @@ export default function Header() {
         <Link href={"/"} passHref>
           <a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
             <Image
-              src={"/FizzBuzzLogo.png"}
+              src={"/image/FizzBuzzLogo.png"}
               alt="FizzBuzzLogo"
               width={50}
               height={50}
               className="rounded-full"
             ></Image>
             <span className="ml-3 text-xl text-emerald-500 hover:text-yellow-500">
-              FizzBuzz Blog
+              FizzBuzz
             </span>
           </a>
         </Link>

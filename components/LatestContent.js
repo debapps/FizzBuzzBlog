@@ -24,7 +24,7 @@ export default function LatestContent() {
           </div>
         </div>
         <div className="flex flex-wrap -m-4">
-          {blogs.map((blog, idx) => {
+          {blogs.slice(0, 4).map((blog, idx) => {
             return <BlogCard key={idx} blog={blog} />;
           })}
         </div>

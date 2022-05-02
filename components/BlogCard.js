@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function BlogCard(props) {
-  const { category, title, content } = props.blog;
+  const { _id, category, title, introduction } = props.blog;
   return (
     <div className="xl:w-1/4 md:w-1/2 p-4">
       <div className="bg-gray-100 p-6 rounded-lg">
@@ -19,7 +20,14 @@ export default function BlogCard(props) {
         <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
           {title.slice(0, 20)} ...
         </h2>
-        <p className="leading-relaxed text-base">{content.slice(0, 80)}</p>
+        <p className="leading-relaxed text-base">
+          {introduction.slice(0, 80)}...
+        </p>
+        <Link href={`/blogpost/${_id}`} passHref>
+          <a className="border-2 border-black block w-fit mt-2 p-2 rounded-lg text-white bg-slate-600 hover:bg-slate-400">
+            Read Blog
+          </a>
+        </Link>
       </div>
     </div>
   );

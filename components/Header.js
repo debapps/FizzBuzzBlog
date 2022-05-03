@@ -4,7 +4,6 @@ import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { RiLogoutCircleLine } from "react-icons/ri";
-import ReactTooltip from "react-tooltip";
 import AuthContext from "./context/auth/authContext";
 
 export default function Header() {
@@ -69,18 +68,9 @@ export default function Header() {
         </Link>
         <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
           <Link href={"/adminLogin"} passHref>
-            <div>
-              <a
-                data-tip="login"
-                data-for="login"
-                className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0"
-              >
-                <MdAdminPanelSettings />
-              </a>
-              <ReactTooltip id="login" type="info" place="top" event="hover">
-                <span>Admin Login</span>
-              </ReactTooltip>
-            </div>
+            <a className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0">
+              <MdAdminPanelSettings />
+            </a>
           </Link>
 
           {authToken && (

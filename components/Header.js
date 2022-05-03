@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import LoginIcon from "@mui/icons-material/Login";
+import { MdAdminPanelSettings } from "react-icons/md";
 
 export default function Header() {
   return (
@@ -9,16 +9,24 @@ export default function Header() {
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
           <Link href={"/"} passHref>
-            <a className="mr-5 hover:text-gray-900">Home</a>
+            <a className="mr-5 text-indigo-500 hover:text-purple-500 active:font-bold">
+              Home
+            </a>
           </Link>
           <Link href={"/about"} passHref>
-            <a className="mr-5 hover:text-gray-900">About</a>
+            <a className="mr-5 text-indigo-500 hover:text-purple-500 active:font-bold">
+              About
+            </a>
           </Link>
           <Link href={"/blogs"} passHref>
-            <a className="mr-5 hover:text-gray-900">Blogs</a>
+            <a className="mr-5 text-indigo-500 hover:text-purple-500 active:font-bold">
+              Blogs
+            </a>
           </Link>
           <Link href={"/contact"} passHref>
-            <a className="hover:text-gray-900">Contact</a>
+            <a className="text-indigo-500 hover:text-purple-500 active:font-bold">
+              Contact
+            </a>
           </Link>
         </nav>
         <Link href={"/"} passHref>
@@ -30,15 +38,17 @@ export default function Header() {
               height={50}
               className="rounded-full"
             ></Image>
-            <span className="ml-3 text-xl text-emerald-500 hover:text-yellow-500">
+            <span className="ml-3 text-xl text-indigo-500 hover:text-purple-500">
               FizzBuzz
             </span>
           </a>
         </Link>
         <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
-          <button className="inline-flex text-blue-300 items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-            <LoginIcon></LoginIcon>
-          </button>
+          <Link href={"/adminLogin"} passHref>
+            <a className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0">
+              <MdAdminPanelSettings />
+            </a>
+          </Link>
         </div>
       </div>
     </header>

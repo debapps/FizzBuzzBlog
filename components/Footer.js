@@ -17,7 +17,7 @@ export default function Footer() {
               height={50}
               className="rounded-full"
             ></Image>
-            <span className="ml-3 text-xl text-emerald-500 hover:text-yellow-500">
+            <span className="ml-3 text-xl text-indigo-500 hover:text-purple-500">
               FizzBuzz
             </span>
           </a>

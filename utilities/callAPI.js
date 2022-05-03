@@ -24,3 +24,11 @@ export function getJSONHeader() {
     "Content-Type": "application/json",
   });
 }
+
+// This function returns the request header with input auth-token.
+export function getAuthHeader(authToken) {
+  return new Headers({
+    "Content-Type": "application/json",
+    "auth-token": authToken,
+  });
+}

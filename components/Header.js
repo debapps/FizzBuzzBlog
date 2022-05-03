@@ -1,9 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
+import { useRouter } from "next/router";
 import { MdAdminPanelSettings } from "react-icons/md";
+import { RiLogoutCircleLine } from "react-icons/ri";
+import ReactTooltip from "react-tooltip";
+import AuthContext from "./context/auth/authContext";
 
 export default function Header() {
+  // Get the auth context.
+  const authContext = useContext(AuthContext);
+  const { authToken, logOutUser } = authContext;
+
+  // Get the router.
+  const router = useRouter();
+
+  // This function logs out the user.
+  function handleLogout() {
+    logOutUser();
+    router.push("/");
+  }
+
   return (
     <header className="text-gray-600 body-font shadow-md">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -28,6 +45,13 @@ export default function Header() {
               Contact
             </a>
           </Link>
+          {authToken && (
+            <Link href={"/admin"} passHref>
+              <a className="text-indigo-500 hover:text-purple-500 active:font-bold ml-5">
+                Admin Panel
+              </a>
+            </Link>
+          )}
         </nav>
         <Link href={"/"} passHref>
           <a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
@@ -45,10 +69,28 @@ export default function Header() {
         </Link>
         <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
           <Link href={"/adminLogin"} passHref>
-            <a className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0">
-              <MdAdminPanelSettings />
-            </a>
+            <div>
+              <a
+                data-tip="login"
+                data-for="login"
+                className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0"
+              >
+                <MdAdminPanelSettings />
+              </a>
+              <ReactTooltip id="login" type="info" place="top" event="hover">
+                <span>Admin Login</span>
+              </ReactTooltip>
+            </div>
           </Link>
+
+          {authToken && (
+            <button
+              onClick={handleLogout}
+              className="inline-flex ml-5 bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0"
+            >
+              <RiLogoutCircleLine />
+            </button>
+          )}
         </div>
       </div>
     </header>

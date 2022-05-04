@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import { MdAdminPanelSettings } from "react-icons/md";
-import { RiLogoutCircleLine } from "react-icons/ri";
+import { RiLogoutCircleLine, RiFunctionFill } from "react-icons/ri";
 import AuthContext from "./context/auth/authContext";
 
 export default function Header() {
@@ -16,8 +16,8 @@ export default function Header() {
 
   // This function logs out the user.
   function handleLogout() {
-    logOutUser();
     router.push("/");
+    logOutUser();
   }
 
   return (
@@ -44,13 +44,6 @@ export default function Header() {
               Contact
             </a>
           </Link>
-          {authToken && (
-            <Link href={"/admin"} passHref>
-              <a className="text-indigo-500 hover:text-purple-500 active:font-bold ml-5">
-                Admin Panel
-              </a>
-            </Link>
-          )}
         </nav>
         <Link href={"/"} passHref>
           <a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
@@ -69,12 +62,19 @@ export default function Header() {
 
         <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
           {authToken ? (
-            <button
-              onClick={handleLogout}
-              className="inline-flex ml-5 bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0"
-            >
-              <RiLogoutCircleLine />
-            </button>
+            <div className="inline-flex justify-between items-center">
+              <Link href={"/admin"} passHref>
+                <a className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0">
+                  <RiFunctionFill />
+                </a>
+              </Link>
+              <button
+                onClick={handleLogout}
+                className="inline-flex ml-2 bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0"
+              >
+                <RiLogoutCircleLine />
+              </button>
+            </div>
           ) : (
             <Link href={"/adminLogin"} passHref>
               <a className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0">

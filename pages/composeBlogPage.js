@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import Head from "next/head";
+import AuthContext from "../components/context/auth/authContext";
+import ComposeBlog from "../components/ComposeBlog";
+import AdminLogin from "./adminLogin";
 
 export default function ComposeBlogPage() {
+  // Get the auth context.
+  let authContext = useContext(AuthContext);
+  const { authToken } = authContext;
+
   return (
     <>
       <Head>
@@ -30,7 +37,7 @@ export default function ComposeBlogPage() {
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
-      <main>ComposeBlogPage</main>
+      <main>{authToken ? <ComposeBlog /> : <AdminLogin />}</main>
     </>
   );
 }

@@ -34,7 +34,7 @@ export default function AuthState(props) {
   }
 
   // This function creates the new admin user.
-  async function createUser(userInfo, authToken) {
+  async function createUser(userInfo) {
     // Get the login URL from API endpoint.
     let apiEndPoint = "/api/createAdmin";
     let url = host + apiEndPoint;

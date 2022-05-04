@@ -66,20 +66,21 @@ export default function Header() {
             </span>
           </a>
         </Link>
-        <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
-          <Link href={"/adminLogin"} passHref>
-            <a className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0">
-              <MdAdminPanelSettings />
-            </a>
-          </Link>
 
-          {authToken && (
+        <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+          {authToken ? (
             <button
               onClick={handleLogout}
               className="inline-flex ml-5 bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0"
             >
               <RiLogoutCircleLine />
             </button>
+          ) : (
+            <Link href={"/adminLogin"} passHref>
+              <a className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0">
+                <MdAdminPanelSettings />
+              </a>
+            </Link>
           )}
         </div>
       </div>

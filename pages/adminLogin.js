@@ -32,6 +32,7 @@ export default function AdminLogin() {
     // Clear the login form.
     clearForm();
 
+    // Show the response.
     if (success) {
       router.push("/admin");
     } else {
@@ -46,23 +47,23 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col justify-center">
+    <div className="flex flex-col justify-center my-20 p-8">
       <div className="px-10 xs:p-0 mx-auto w-full md:w-[40%]">
-        <div className="text-4xl mb-5 flex flex-col items-center justify-center text-indigo-500 hover:text-indigo-400">
+        <div className="text-4xl mb-5 flex flex-col items-center justify-center text-indigo-500 hover:text-purple-500">
           <MdAdminPanelSettings />
           <span>Admin Login</span>
         </div>
-        <div className="bgWhite w-full bg-gray-100 rounded-lg shadow-lg  divide-y divide-gray-200">
+        <div className="w-full bg-gray-100 rounded-lg shadow-lg  divide-y divide-gray-200">
           <form className="px-5 py-7" onSubmit={handleFormSubmit}>
-            <label className="font-semibold text-sm pb-1 block text-indigo-500 hover:text-indigo-400">
+            <label className="font-semibold text-sm pb-1 block text-indigo-500 hover:text-purple-500">
               E-mail
             </label>
             <input
-              type="text"
+              type="email"
               className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
               ref={email}
             />
-            <label className="font-semibold text-sm pb-1 block text-indigo-500 hover:text-indigo-400">
+            <label className="font-semibold text-sm pb-1 block text-indigo-500 hover:text-purple-500">
               Password
             </label>
             <input
@@ -72,35 +73,11 @@ export default function AdminLogin() {
             />
             <button
               type="submit"
-              className="transition duration-200 bg-indigo-500  hover:bg-indigo-400 focus:bg-indigo-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 textWhite w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
+              className="transition duration-200 bg-indigo-500 hover:bg-purple-500 focus:bg-indigo-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 p-2.5 rounded-lg text-sm w-full shadow-sm hover:shadow-md font-semibold text-center inline-block"
             >
-              <span className="inline-block mr-2 text-white">Admin Login</span>
+              <span className="inline-block text-white">Admin Login</span>
             </button>
           </form>
-
-          <div className="py-5">
-            <div className="grid grid-cols-2 gap-1">
-              <div className="text-center sm:textLeft whitespace-nowrap">
-                <button className="transition duration-200 mx-5 px-5 py-4 cursor-pointer font-normal text-sm rounded-lg text-indigo-500 hover:text-indigo-400 focus:outline-none focus:bg-gray-200 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="w-4 h-4 inline-block align-text-top"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
-                    />
-                  </svg>
-                  <span className="inline-block ml-1">Forgot Password</span>
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

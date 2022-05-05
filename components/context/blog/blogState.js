@@ -35,8 +35,24 @@ export default function BlogState(props) {
     // Set the blog list.
     setBlogs(blogList);
   };
+
+  // This function gets the blog data from UI and store it to database using API EndPoint.
+  async function submitBlogPost(blogPostObj) {
+    // Get the auth header.
+    const myHeader = getJSONHeader();
+
+    // Get the host address and create the URL.
+    let apiEndPoint = "/api/compose";
+    const url = host + apiEndPoint;
+
+    // Call the blog API.
+    let response = await callBlogAPI(url, myHeader, "POST", blogPostObj);
+
+    return response;
+  }
+
   return (
-    <BlogContext.Provider value={{ blogs, fetchAllBlogs }}>
+    <BlogContext.Provider value={{ blogs, fetchAllBlogs, submitBlogPost }}>
       {props.children}
     </BlogContext.Provider>
   );

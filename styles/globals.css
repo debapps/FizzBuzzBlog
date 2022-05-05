@@ -1,3 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,700;1,400;1,700&family=Oswald:wght@500&family=Zilla+Slab&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .preview {
+        @apply lg:w-2/3 mx-auto leading-relaxed text-left text-base;
+    }
+
+    .preview h2 {
+        @apply text-2xl font-extrabold font-oswald my-1 leading-10;
+    }
+
+    .preview h3 {
+        @apply text-xl font-bold font-oswald my-1 leading-10;
+    }
+
+    .preview p {
+        @apply text-lg font-montserrat font-normal my-2;
+    }
+
+    .preview strong {
+        @apply font-extrabold;
+    }
+
+    .preview a {
+        @apply text-base font-zilla underline font-normal;
+    }
+
+    .preview a:hover {
+        @apply text-blue-400;
+    }
+
+    .preview code {
+        @apply bg-slate-200 p-1 rounded-md text-sm font-mono my-1;
+    }
+
+    .preview ul {
+        @apply list-disc my-1 px-5;
+    }
+
+    .preview ol {
+        @apply list-decimal my-1 px-5;
+    }
+}

@@ -1,17 +1,88 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
+import ShowDown from "showdown";
+import { useRouter } from "next/router";
+import AuthContext from "./context/auth/authContext";
+import BlogContext from "./context/blog/blogContext";
 
 export default function ComposeBlog() {
+  // Showdown converter configurations.
+  const converter = new ShowDown.Converter({
+    openLinksInNewWindow: true,
+    noHeaderId: true,
+  });
+
+  // Get the Next JS router.
+  const router = useRouter();
+
+  // Get the blog context.
+  let blogContext = useContext(BlogContext);
+  const { submitBlogPost } = blogContext;
+
+  // Get the auth context.
+  let authContext = useContext(AuthContext);
+  const { user } = authContext;
+
+  // Initialize the reference of the form field.
+  let title = useRef(null);
+  let category = useRef(null);
+  let introduction = useRef(null);
+  let content = useRef(null);
+
+  // This function submits the blog post.
+  async function handleSubmit(event) {
+    // Prevents default behaviour of the form.
+    event.preventDefault();
+
+    // Prepare the blog post object.
+    const blogPostObj = {
+      title: title.current.value,
+      category: category.current.value,
+      author: user.userName,
+      introduction: introduction.current.value,
+      content: getHTML(content.current.value),
+    };
+
+    // Submit the blog into database.
+    let { success, message } = await submitBlogPost(blogPostObj);
+
+    // Show the response.
+    if (success) {
+      clearForm();
+      alert(message);
+      router.push("/blogs");
+    } else {
+      alert(message);
+    }
+  }
+
+  // This function clears the input form.
+  function clearForm() {
+    title.current.value = null;
+    category.current.value = null;
+    introduction.current.value = null;
+    content.current.value = null;
+  }
+
+  // This function converts markdown text to HTML text.
+  function getHTML(inputText) {
+    let htmlText = converter.makeHtml(inputText);
+    return htmlText;
+  }
+
   return (
-    <main className="bg-gray-50 flex flex-col justify-center items-center p-10">
+    <main className="bg-gray-50 flex flex-col justify-center items-center p-3 md:p-10 w-full">
       <h2 className="text-xl md:text-4xl text-indigo-500 hover:text-purple-500 mb-5">
         Write Blog Post
       </h2>
-      <form className="bg-gray-100 border rounded-lg shadow-md p-5 flex flex-col justify-between items-center space-y-5 w-[90%]">
-        <div className="flex flex-col md:flex-row md:justify-between items-start">
-          <section className="flex flex-col items-start space-y-5 w-1/2">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-gray-100 border rounded-lg shadow-md md:p-5 flex flex-col justify-center md:justify-between items-center space-y-5 w-full md:w-[90%]"
+      >
+        <div className="flex flex-col md:flex-row justify-center md:justify-between items-center">
+          <section className="flex flex-col items-center md:items-start mt-5 space-y-5 w-full md:w-1/2">
             <div className="flex flex-col">
               <label
-                className="text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
+                className="text-base md:text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
                 htmlFor="title"
               >
                 Title
@@ -20,11 +91,12 @@ export default function ComposeBlog() {
                 className="w-full px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400"
                 type="text"
                 id="title"
+                ref={title}
               />
             </div>
             <div className="flex flex-col">
               <label
-                className="text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
+                className="text-base md:text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
                 htmlFor="category"
               >
                 Category
@@ -33,43 +105,46 @@ export default function ComposeBlog() {
                 className="w-full px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400"
                 type="text"
                 id="category"
+                ref={category}
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col mb-2 md:mb-0">
               <label
-                className="text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
+                className="text-base md:text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
                 htmlFor="synopsis"
               >
                 Synopsis
               </label>
               <textarea
-                className="overflow-auto px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400 bg-gray-600 text-indigo-100"
+                className="text-sm md:text-lg overflow-auto px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400 bg-gray-600 text-indigo-100"
                 type="text"
                 id="synopsis"
                 rows="6"
-                cols="50"
+                cols="40"
+                ref={introduction}
               />
             </div>
           </section>
-          <section className="flex flex-col space-y-5 ml-32">
+          <section className="flex flex-col space-y-5 md:ml-32">
             <div className="flex flex-col">
               <label
-                className="text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
+                className="text-base md:text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
                 htmlFor="content"
               >
                 Content
               </label>
               <textarea
-                className="overflow-auto px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400 bg-slate-900 text-white"
+                className="text-sm md:text-lg overflow-auto px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400 bg-slate-900 text-white"
                 type="text"
                 id="content"
                 rows="15"
-                cols="50"
+                cols="40"
+                ref={content}
               />
             </div>
           </section>
         </div>
-        <section className="flex space-x-2">
+        <section className="flex space-x-2 pb-3">
           <button
             className="text-white text-md bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black p-2 rounded-lg"
             type="submit"

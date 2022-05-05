@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import React, { useContext } from "react";
 import BlogContext from "../../components/context/blog/blogContext";
+import { formatDate } from "../../utilities/dateFormat";
 
 const Blog = () => {
   // Get the blog context.
@@ -16,6 +17,11 @@ const Blog = () => {
   let blogPost = blogs.find((blog) => {
     return blog._id === blogID;
   });
+
+  // This function sets the HTML text.
+  function setHTML(htmlText) {
+    return { __html: htmlText };
+  }
 
   return (
     <>
@@ -45,17 +51,22 @@ const Blog = () => {
         />
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
-      <main className="container px-5 py-24 mx-auto">
+      <main className="container px-5 py-10 mb-64 mx-auto">
         <div className="flex flex-col w-full mb-12">
-          <h1 className="sm:text-3xl text-center text-2xl font-medium title-font mb-4 text-gray-900">
+          <h1 className="sm:text-3xl text-center text-2xl font-medium font-oswald mb-4 text-gray-900">
             {blogPost.title}
           </h1>
-          <p className="lg:w-2/3 mx-auto mb-2 leading-relaxed text-left text-base italic">
+          <p className="lg:w-2/3 mx-auto leading-5 text-center font-zilla font-semibold text-sm mb-5">
+            Published on: {formatDate(blogPost.dateCreated)} | Written by -{" "}
+            {blogPost.author}
+          </p>
+          <p className="lg:w-2/3 mx-auto mb-2 leading-relaxed text-left text-base font-montserrat text-slate-600 italic">
             {blogPost.introduction}
           </p>
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-left text-base">
-            {blogPost.content}
-          </p>
+          <p
+            dangerouslySetInnerHTML={setHTML(blogPost.content)}
+            className="preview"
+          ></p>
         </div>
       </main>
     </>

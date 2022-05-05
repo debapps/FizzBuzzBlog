@@ -13,21 +13,22 @@ export default function BlogItem(props) {
     <div className="-my-8 divide-y-2 divide-gray-100">
       <div className="py-8 flex flex-wrap md:flex-nowrap">
         <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-          <span className="font-semibold title-font text-gray-700">
+          <span className="font-semibold text-indigo-500 font-zilla">
             {category.toUpperCase()}
           </span>
-          <span className="mt-1 text-gray-500 text-sm">{publishDate}</span>
+          <span className="mt-1 text-gray-500 font-zilla text-sm">
+            {publishDate}
+          </span>
         </div>
         <div className="md:flex-grow">
-          <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
-            {title}
-          </h2>
-          <p className="leading-relaxed">{introduction}</p>
           <Link href={`/blogpost/${_id}`} passHref>
-            <a className="text-indigo-500 inline-flex items-center mt-4 hover:underline hover:text-indigo-600">
-              Read Blog
-            </a>
+            <h2 className="text-2xl font-semibold text-purple-500 hover:text-indigo-500 font-oswald mb-2 cursor-pointer">
+              {title}
+            </h2>
           </Link>
+          <p className="leading-relaxed font-medium font-montserrat text-base md:text-lg">
+            {introduction}
+          </p>
         </div>
       </div>
     </div>

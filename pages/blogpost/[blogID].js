@@ -3,6 +3,7 @@ import Head from "next/head";
 import React, { useContext } from "react";
 import BlogContext from "../../components/context/blog/blogContext";
 import { formatDate } from "../../utilities/dateFormat";
+import Link from "next/link";
 
 const Blog = () => {
   // Get the blog context.
@@ -67,6 +68,13 @@ const Blog = () => {
             dangerouslySetInnerHTML={setHTML(blogPost.content)}
             className="preview"
           ></p>
+          <div className="mx-auto my-10">
+            <Link href={"/blogs"} passHref>
+              <a className="w-fit font-montserrat font-semibold text-white bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black py-2 px-8 focus:outline-none rounded text-lg">
+                Read more blogs
+              </a>
+            </Link>
+          </div>
         </div>
       </main>
     </>

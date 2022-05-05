@@ -33,6 +33,7 @@ export default function Home() {
       </Head>
       <main>
         <HeroElement />
+        <hr className="w-[90%] border-t-0 border-x-0 border-b-2 mx-auto border-dashed border-indigo-100" />
         <LatestContent />
       </main>
     </div>

@@ -18,7 +18,7 @@ export default function LatestContent() {
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap justify-center items-center text-center w-full mb-20">
           <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">
+            <h1 className="font-oswald sm:text-4xl text-3xl mb-4 font-medium text-indigo-500 hover:text-purple-500">
               Our Latest Blogs
             </h1>
           </div>

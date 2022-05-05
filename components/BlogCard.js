@@ -14,17 +14,17 @@ export default function BlogCard(props) {
           width={720}
           height={400}
         />
-        <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
+        <h3 className="tracking-widest text-indigo-500 text-xs font-medium font-zilla mb-1">
           {category.toUpperCase()}
         </h3>
-        <h2 className="text-lg text-gray-900 font-medium title-font mb-4">
+        <h2 className="text-lg text-purple-500 font-oswald font-normal mb-4">
           {title.slice(0, 20)} ...
         </h2>
-        <p className="leading-relaxed text-base">
-          {introduction.slice(0, 80)}...
+        <p className="text-base font-montserrat text-gray-600">
+          {introduction.slice(0, 70)}...
         </p>
         <Link href={`/blogpost/${_id}`} passHref>
-          <a className="border-2 hover:border-black block w-fit mt-2 p-2 rounded-lg text-white bg-indigo-500 hover:bg-indigo-400">
+          <a className="block w-fit mt-2 p-2 rounded-lg text-white bg-indigo-500 hover:bg-purple-500">
             Read Blog
           </a>
         </Link>

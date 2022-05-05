@@ -69,10 +69,10 @@ export default function UserForm() {
   }
 
   return (
-    <section className="text-gray-600 relative">
+    <section className="relative">
       <div className="container px-5 py-10 mx-auto">
         <div className="flex flex-col text-center w-full mb-8">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">
+          <h1 className="sm:text-3xl text-2xl font-oswald font-medium text-indigo-500 hover:text-purple-500">
             Add new Admin User
           </h1>
         </div>
@@ -82,7 +82,7 @@ export default function UserForm() {
               <div className="relative">
                 <label
                   htmlFor="name"
-                  className="leading-7 text-sm text-gray-600"
+                  className="leading-7 text-lg font-zilla font-medium text-indigo-500 hover:text-purple-500"
                 >
                   Name
                 </label>
@@ -98,7 +98,7 @@ export default function UserForm() {
               <div className="relative">
                 <label
                   htmlFor="email"
-                  className="leading-7 text-sm text-gray-600"
+                  className="leading-7 text-lg font-zilla font-medium text-indigo-500 hover:text-purple-500"
                 >
                   Email
                 </label>
@@ -114,7 +114,7 @@ export default function UserForm() {
               <div className="relative">
                 <label
                   htmlFor="password"
-                  className="leading-7 text-sm text-gray-600"
+                  className="leading-7 text-lg font-zilla font-medium text-indigo-500 hover:text-purple-500"
                 >
                   Set Password
                 </label>
@@ -130,7 +130,7 @@ export default function UserForm() {
               <div className="relative">
                 <label
                   htmlFor="confirm"
-                  className="leading-7 text-sm text-gray-600"
+                  className="leading-7 text-lg font-zilla font-medium text-indigo-500 hover:text-purple-500"
                 >
                   Confirm Password
                 </label>
@@ -144,7 +144,9 @@ export default function UserForm() {
             </div>
             <div className="p-2 w-3/4">
               <div className="relative">
-                <p className="leading-7 text-sm text-gray-600 mx-2">Sex</p>
+                <p className="leading-7 text-lg font-zilla font-medium text-indigo-500 hover:text-purple-500">
+                  Sex
+                </p>
                 <input
                   type="radio"
                   id="male"
@@ -155,7 +157,7 @@ export default function UserForm() {
                 />
                 <label
                   htmlFor="male"
-                  className="leading-7 text-sm text-gray-600 mx-2"
+                  className="leading-7 text-lg font-zilla font-medium text-indigo-500 hover:text-purple-500 mx-5"
                 >
                   Male
                 </label>
@@ -169,7 +171,7 @@ export default function UserForm() {
                 />
                 <label
                   htmlFor="female"
-                  className="leading-7 text-sm text-gray-600 mx-2"
+                  className="leading-7 text-lg font-zilla font-medium text-indigo-500 hover:text-purple-500 mx-5"
                 >
                   Female
                 </label>
@@ -183,7 +185,7 @@ export default function UserForm() {
                 />
                 <label
                   htmlFor="other"
-                  className="leading-7 text-sm text-gray-600 mx-2"
+                  className="leading-7 text-lg font-zilla font-medium text-indigo-500 hover:text-purple-500 mx-5"
                 >
                   Others
                 </label>
@@ -194,15 +196,15 @@ export default function UserForm() {
               <div className="p-2">
                 <button
                   type="submit"
-                  className="flex mx-auto text-white bg-indigo-500 hover:bg-purple-500 border-0 py-2 px-8 focus:outline-none  rounded text-lg"
+                  className="flex mx-auto font-montserrat font-semibold text-white bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black py-2 px-8 focus:outline-none rounded text-lg"
                 >
-                  Add Admin User
+                  Add
                 </button>
               </div>
               <div className="p-2">
                 <button
                   type="reset"
-                  className="flex mx-auto text-white bg-indigo-500 hover:bg-purple-500 border-0 py-2 px-8 focus:outline-none rounded text-lg"
+                  className="flex mx-auto font-montserrat font-semibold text-white bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black py-2 px-8 focus:outline-none rounded text-lg"
                 >
                   Reset
                 </button>

@@ -6,23 +6,23 @@ import { BsGithub } from "react-icons/bs";
 
 export default function Footer() {
   return (
-    <footer className="text-gray-600 body-font w-full border-2">
+    <footer className="bg-gradient-to-r from-cyan-200 via-yellow-300 to-orange-300 w-full border">
       <div className="container px-5 py-5 mx-auto flex items-center sm:flex-row flex-col">
         <Link href={"/"} passHref>
-          <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+          <a className="flex font-medium items-center md:justify-start justify-center">
             <Image
               src={"/image/FizzBuzzLogo.png"}
               alt="FizzBuzzLogo"
-              width={50}
-              height={50}
-              className="rounded-full"
+              width={30}
+              height={30}
+              className="inline-block rounded-full"
             ></Image>
-            <span className="ml-3 text-xl text-indigo-500 hover:text-purple-500">
+            <span className="ml-3 font-oswald text-xl font-medium text-indigo-500 hover:text-purple-500">
               FizzBuzz
             </span>
           </a>
         </Link>
-        <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:borderL-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+        <p className="text-sm text-indigo-500 font-zilla sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-purple-300 sm:py-2 sm:mt-0 mt-4">
           © {new Date().getFullYear()} Debaditya Bhar
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
@@ -42,7 +42,7 @@ export default function Footer() {
           </Link>
           <Link href={"https://github.com/debapps"} passHref>
             <a className="ml-3" target="_blank" rel="noreferrer">
-              <span className="text-[#f4a261] text-2xl">
+              <span className="text-[#b56f37] text-2xl">
                 <BsGithub />
               </span>
             </a>

@@ -71,7 +71,7 @@ export default function ComposeBlog() {
 
   return (
     <main className="bg-gray-50 flex flex-col justify-center items-center p-3 md:p-10 w-full">
-      <h2 className="text-xl md:text-4xl text-indigo-500 hover:text-purple-500 mb-5">
+      <h2 className="text-xl md:text-4xl font-oswald text-indigo-500 hover:text-purple-500 mb-5">
         Write Blog Post
       </h2>
       <form
@@ -82,7 +82,7 @@ export default function ComposeBlog() {
           <section className="flex flex-col items-center md:items-start mt-5 space-y-5 w-full md:w-1/2">
             <div className="flex flex-col">
               <label
-                className="text-base md:text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
+                className="text-base md:text-lg font-zilla leading-7 text-indigo-500 hover:text-purple-500 mb-2"
                 htmlFor="title"
               >
                 Title
@@ -96,7 +96,7 @@ export default function ComposeBlog() {
             </div>
             <div className="flex flex-col">
               <label
-                className="text-base md:text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
+                className="text-base md:text-lg font-zilla leading-7 text-indigo-500 hover:text-purple-500 mb-2"
                 htmlFor="category"
               >
                 Category
@@ -110,7 +110,7 @@ export default function ComposeBlog() {
             </div>
             <div className="flex flex-col mb-2 md:mb-0">
               <label
-                className="text-base md:text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
+                className="text-base md:text-lg font-zilla leading-7 text-indigo-500 hover:text-purple-500 mb-2"
                 htmlFor="synopsis"
               >
                 Synopsis
@@ -128,7 +128,7 @@ export default function ComposeBlog() {
           <section className="flex flex-col space-y-5 md:ml-32">
             <div className="flex flex-col">
               <label
-                className="text-base md:text-lg leading-7 text-indigo-500 hover:text-purple-500 mb-2"
+                className="text-base md:text-lg font-zilla leading-7 text-indigo-500 hover:text-purple-500 mb-2"
                 htmlFor="content"
               >
                 Content
@@ -146,13 +146,13 @@ export default function ComposeBlog() {
         </div>
         <section className="flex space-x-2 pb-3">
           <button
-            className="text-white text-md bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black p-2 rounded-lg"
+            className="text-white font-montserrat font-semibold bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black p-2 rounded-lg"
             type="submit"
           >
             Submit Post
           </button>
           <button
-            className="text-white text-md bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black p-2 rounded-lg"
+            className="text-white font-montserrat font-semibold bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black p-2 rounded-lg"
             type="reset"
           >
             Cancel

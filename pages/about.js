@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Footer from "../components/Footer";
 
 export default function About() {
   return (
@@ -31,6 +32,7 @@ export default function About() {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <p>About</p>
+      <Footer />
     </>
   );
 }

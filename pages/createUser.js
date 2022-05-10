@@ -3,6 +3,7 @@ import Head from "next/head";
 import UserForm from "../components/UserForm";
 import AuthContext from "../components/context/auth/authContext";
 import AdminLogin from "./adminLogin";
+import Footer from "../components/Footer";
 
 export default function CreateUser() {
   // Get the auth context.
@@ -38,6 +39,7 @@ export default function CreateUser() {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       {authToken ? <UserForm /> : <AdminLogin />}
+      <Footer />
     </>
   );
 }

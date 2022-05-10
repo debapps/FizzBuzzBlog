@@ -83,6 +83,7 @@ export default function AuthState(props) {
     }
   }
 
+
   // This function log out the existing admin user.
   const logOutUser = () => {
     setAuthToken(null);

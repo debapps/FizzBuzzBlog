@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import Head from "next/head";
 import BlogItem from "../components/BlogItem";
 import BlogContext from "../components/context/blog/blogContext";
+import Footer from "../components/Footer";
 
 export default function Blogs() {
   // Get the blog context.
@@ -49,6 +50,7 @@ export default function Blogs() {
           })}
         </div>
       </section>
+      <Footer />
     </>
   );
 }

@@ -3,6 +3,7 @@ import Head from "next/head";
 import UserAccount from "../components/UserAccount";
 import AdminLogin from "./adminLogin";
 import AuthContext from "../components/context/auth/authContext";
+import Footer from "../components/Footer";
 
 export default function Account() {
   // Get the auth context.
@@ -38,6 +39,9 @@ export default function Account() {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       {authToken ? <UserAccount /> : <AdminLogin />}
+      <section className="fixed bottom-0 w-full">
+        <Footer />
+      </section>
     </>
   );
 }

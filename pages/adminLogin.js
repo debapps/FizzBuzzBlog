@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { MdAdminPanelSettings } from "react-icons/md";
 import AuthContext from "../components/context/auth/authContext";
+import Footer from "../components/Footer";
 
 export default function AdminLogin() {
   // Get the auth context.
@@ -112,6 +113,9 @@ export default function AdminLogin() {
           </div>
         </div>
       </main>
+      <section className="fixed bottom-0 w-full">
+        <Footer />
+      </section>
     </>
   );
 }

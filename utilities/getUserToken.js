@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 // Get the secret key.
-const secretKey = process.env.DEV_SECRET_KEY;
+const secretKey = process.env.SECRET_KEY;
 
 // This function get the user ID from the JWT token passed in request header.
 

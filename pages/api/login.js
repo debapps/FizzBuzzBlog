@@ -8,7 +8,7 @@ import User from "../../models/users";
 import mongoConnect from "../../utilities/dbConnect";
 
 // Secret Key for password hashing.
-const secretKey = process.env.DEV_SECRET_KEY;
+const secretKey = process.env.SECRET_KEY;
 
 // Connect to MongoDB Server.
 mongoConnect();

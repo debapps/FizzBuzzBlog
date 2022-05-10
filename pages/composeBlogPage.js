@@ -3,6 +3,7 @@ import Head from "next/head";
 import AuthContext from "../components/context/auth/authContext";
 import ComposeBlog from "../components/ComposeBlog";
 import AdminLogin from "./adminLogin";
+import Footer from "../components/Footer";
 
 export default function ComposeBlogPage() {
   // Get the auth context.
@@ -38,6 +39,7 @@ export default function ComposeBlogPage() {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <main>{authToken ? <ComposeBlog /> : <AdminLogin />}</main>
+      <Footer />
     </>
   );
 }

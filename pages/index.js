@@ -1,6 +1,7 @@
 import Head from "next/head";
 import HeroElement from "../components/HeroElement";
 import LatestContent from "../components/LatestContent";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
         <HeroElement />
         <hr className="w-[90%] border-t-0 border-x-0 border-b-2 mx-auto border-dashed border-indigo-100" />
         <LatestContent />
+        <Footer />
       </main>
     </div>
   );

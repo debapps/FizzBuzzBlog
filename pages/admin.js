@@ -3,6 +3,7 @@ import Head from "next/head";
 import AdminPanel from "../components/AdminPanel";
 import AuthContext from "../components/context/auth/authContext";
 import AdminLogin from "./adminLogin";
+import Footer from "../components/Footer";
 
 function AdminPage() {
   // Get the auth context.
@@ -38,6 +39,9 @@ function AdminPage() {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       {authToken ? <AdminPanel /> : <AdminLogin />}
+      <section className="fixed bottom-0 w-full">
+        <Footer />
+      </section>
     </>
   );
 }

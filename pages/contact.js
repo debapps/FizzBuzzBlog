@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Footer from "../components/Footer";
 
 export default function Contact() {
   return (
@@ -31,6 +32,7 @@ export default function Contact() {
         <link rel="manifest" href="/favicon/site.webmanifest" />
       </Head>
       <p>contacts</p>
+      <Footer />
     </>
   );
 }

@@ -20,7 +20,7 @@ export default function ComposeBlog() {
 
   // Get the auth context.
   let authContext = useContext(AuthContext);
-  const { user } = authContext;
+  const { user, getUserDetails } = authContext;
 
   // Initialize the reference of the form field.
   let title = useRef(null);
@@ -33,11 +33,15 @@ export default function ComposeBlog() {
     // Prevents default behaviour of the form.
     event.preventDefault();
 
+    // Get the author name.
+    await getUserDetails();
+    let authorName = user.userName;
+
     // Prepare the blog post object.
     const blogPostObj = {
       title: title.current.value,
       category: category.current.value,
-      author: user.userName,
+      author: authorName,
       introduction: introduction.current.value,
       content: getHTML(content.current.value),
     };
@@ -85,7 +89,7 @@ export default function ComposeBlog() {
                 className="text-base md:text-lg font-zilla leading-7 text-indigo-500 hover:text-purple-500 mb-2"
                 htmlFor="title"
               >
-                Title
+                Title *
               </label>
               <input
                 className="w-full px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400"
@@ -113,7 +117,7 @@ export default function ComposeBlog() {
                 className="text-base md:text-lg font-zilla leading-7 text-indigo-500 hover:text-purple-500 mb-2"
                 htmlFor="synopsis"
               >
-                Synopsis
+                Synopsis *
               </label>
               <textarea
                 className="text-sm md:text-lg overflow-auto px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400 bg-gray-600 text-indigo-100"
@@ -131,7 +135,7 @@ export default function ComposeBlog() {
                 className="text-base md:text-lg font-zilla leading-7 text-indigo-500 hover:text-purple-500 mb-2"
                 htmlFor="content"
               >
-                Content
+                Content *
               </label>
               <textarea
                 className="text-sm md:text-lg overflow-auto px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400 bg-slate-900 text-white"

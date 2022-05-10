@@ -8,10 +8,10 @@ import User from "../../models/users";
 import mongoConnect from "../../utilities/dbConnect";
 
 // Salt Rounds.
-const saltRounds = parseInt(process.env.DEV_SALT_ROUNDS);
+const saltRounds = parseInt(process.env.SALT_ROUNDS);
 
 // Secret Key for password hashing.
-const secretKey = process.env.DEV_SECRET_KEY;
+const secretKey = process.env.SECRET_KEY;
 
 // Connect to MongoDB Server.
 mongoConnect();
@@ -43,7 +43,7 @@ export default async function handler(req, res) {
 
       // Sign the JWT web token taking the user id.
       let authData = {
-        userID: newAdmin.id,
+        userID: saveUser.id,
       };
       let authToken = jwt.sign(authData, secretKey);
 

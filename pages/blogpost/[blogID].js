@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import BlogContext from "../../components/context/blog/blogContext";
 import { formatDate } from "../../utilities/dateFormat";
 import Link from "next/link";
+import Image from "next/image";
 
 const Blog = () => {
   // Get the blog context.
@@ -64,6 +65,16 @@ const Blog = () => {
           <p className="lg:w-2/3 mx-auto mb-2 leading-relaxed text-left text-base font-montserrat text-slate-600 italic">
             {blogPost.introduction}
           </p>
+          <div className="mx-auto my-10 w-fit">
+            <Image
+              className="object-cover object-center rounded-lg"
+              src={blogPost.blogImageURL}
+              alt="Blog Image"
+              width={800}
+              height={400}
+            />
+          </div>
+
           <p
             dangerouslySetInnerHTML={setHTML(blogPost.content)}
             className="preview"

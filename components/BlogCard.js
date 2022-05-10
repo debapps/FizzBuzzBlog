@@ -3,13 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function BlogCard(props) {
-  const { _id, category, title, introduction } = props.blog;
+  const { _id, category, title, introduction, blogImageURL } = props.blog;
   return (
     <div className="xl:w-1/4 md:w-1/2 p-4">
       <div className="bg-gray-100 p-6 rounded-lg">
         <Image
           className="h-40 rounded w-full object-cover object-center mb-6"
-          src="https://picsum.photos/720/400"
+          src={blogImageURL}
           alt="content"
           width={720}
           height={400}

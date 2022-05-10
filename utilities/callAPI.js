@@ -18,6 +18,18 @@ export async function callBlogAPI(url, header, methodName = "GET", data = {}) {
   return response.json();
 }
 
+// This function calls cloudinary API to upload the media files.
+export async function callCloudAPI(url, formData) {
+  let response = null;
+
+  response = await fetch(url, {
+    method: "POST",
+    body: formData,
+  }).then((res) => res.json());
+
+  return response;
+}
+
 // This fuction returns the JSON request header.
 export function getJSONHeader() {
   return new Headers({

@@ -1,8 +1,11 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import ShowDown from "showdown";
 import { useRouter } from "next/router";
 import AuthContext from "./context/auth/authContext";
 import BlogContext from "./context/blog/blogContext";
+import { callCloudAPI } from "../utilities/callAPI";
+
+const cloudAPIURL = process.env.NEXT_PUBLIC_CLOUD_URL;
 
 export default function ComposeBlog() {
   // Showdown converter configurations.
@@ -28,6 +31,29 @@ export default function ComposeBlog() {
   let introduction = useRef(null);
   let content = useRef(null);
 
+  // File Upload hooks.
+  const [uploadFile, setUploadFile] = useState(null);
+
+  // This function triggers when the file input changes.
+  async function handleImage(event) {
+    setUploadFile(event.target.files[0]);
+  }
+
+  // This function upload the image into cloudiary.
+  async function uploadImg() {
+    // Create Form Data Object to upload the image file into cloudinary.
+    const formData = new FormData();
+    formData.append("file", uploadFile);
+    formData.append("upload_preset", "fizzbuzz");
+
+    try {
+      // Upload the Image into Cloudinary and get the image URL.
+      const cloudResponse = await callCloudAPI(cloudAPIURL, formData);
+      return cloudResponse.secure_url;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
   // This function submits the blog post.
   async function handleSubmit(event) {
     // Prevents default behaviour of the form.
@@ -37,12 +63,16 @@ export default function ComposeBlog() {
     await getUserDetails();
     let authorName = user.userName;
 
+    // Get image upload url.
+    let imageURL = await uploadImg();
+
     // Prepare the blog post object.
     const blogPostObj = {
       title: title.current.value,
       category: category.current.value,
       author: authorName,
       introduction: introduction.current.value,
+      blogImageURL: imageURL,
       content: getHTML(content.current.value),
     };
 
@@ -112,6 +142,14 @@ export default function ComposeBlog() {
                 ref={category}
               />
             </div>
+            <div className="flex flex-col">
+              <input
+                className="w-full px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400"
+                type="file"
+                name="blogImg"
+                onChange={handleImage}
+              />
+            </div>
             <div className="flex flex-col mb-2 md:mb-0">
               <label
                 className="text-base md:text-lg font-zilla leading-7 text-indigo-500 hover:text-purple-500 mb-2"
@@ -141,8 +179,8 @@ export default function ComposeBlog() {
                 className="text-sm md:text-lg overflow-auto px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400 bg-slate-900 text-white"
                 type="text"
                 id="content"
-                rows="15"
-                cols="40"
+                rows="17"
+                cols="45"
                 ref={content}
               />
             </div>

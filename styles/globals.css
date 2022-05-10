@@ -6,7 +6,7 @@
 
 @layer base {
     .preview {
-        @apply lg:w-2/3 mx-auto leading-relaxed text-left text-base;
+        @apply w-2/3 mx-auto leading-relaxed text-left text-base;
     }
 
     .preview h2 {
@@ -37,8 +37,8 @@
         @apply bg-slate-200 p-1 rounded-md text-sm font-mono my-1;
     }
 
-    .preview ul {
-        @apply list-disc my-1 px-5;
+    .preview ul li {
+        @apply list-disc mx-10 my-1 px-1;
     }
 
     .preview ol {

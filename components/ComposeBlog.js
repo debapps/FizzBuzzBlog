@@ -30,6 +30,7 @@ export default function ComposeBlog() {
   let category = useRef(null);
   let introduction = useRef(null);
   let content = useRef(null);
+  let imageFile = useRef(null);
 
   // File Upload hooks.
   const [uploadFile, setUploadFile] = useState(null);
@@ -143,10 +144,20 @@ export default function ComposeBlog() {
               />
             </div>
             <div className="flex flex-col">
+              <button
+                onClick={(event) => {
+                  event.preventDefault();
+                  imageFile.current.click();
+                }}
+                className="text-white font-montserrat font-semibold bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black p-2 rounded-lg"
+              >
+                Upload Image
+              </button>
               <input
-                className="w-full px-5 py-2 rounded-md caret-purple-400 border-2 border-indigo-400 hover:border-purple-400"
+                className="hidden"
                 type="file"
                 name="blogImg"
+                ref={imageFile}
                 onChange={handleImage}
               />
             </div>

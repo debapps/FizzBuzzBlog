@@ -18,7 +18,7 @@ export default function Footer() {
               className="inline-block rounded-full"
             ></Image>
             <span className="ml-3 font-oswald text-xl font-medium text-indigo-500 hover:text-purple-500">
-              FizzBuzz
+              FizzBuzz.Blog
             </span>
           </a>
         </Link>

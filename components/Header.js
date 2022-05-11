@@ -55,7 +55,7 @@ export default function Header() {
               className="inline-block rounded-full"
             ></Image>
             <span className="ml-3 font-oswald text-4xl font-medium text-indigo-500 hover:text-purple-500">
-              FizzBuzz
+              FizzBuzz.Blog
             </span>
           </a>
         </Link>

@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>FizzBuzz Blog - Programing Tips and Stories</title>
+        <title>FizzBuzz.Blog - Programing Tips and Stories</title>
         <meta
           name="description"
           content="FizzBuzz is the personal blog to document learning experiences, Tips, Standard Procedures, Reusable components and links related to Web development, Data Analysis and Programming."

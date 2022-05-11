@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,700;1,400;1,700&family=Oswald:wght@500&family=Zilla+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;1,700&family=Oswald:wght@500&family=Zilla+Slab&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 @layer base {
     .preview {
-        @apply w-2/3 mx-auto leading-relaxed text-left text-base;
+        @apply lg:w-2/3 mx-auto leading-relaxed text-left text-base text-gray-600;
     }
 
     .preview h2 {
@@ -23,6 +23,10 @@
 
     .preview strong {
         @apply font-extrabold;
+    }
+
+    .preview em {
+        @apply italic;
     }
 
     .preview a {

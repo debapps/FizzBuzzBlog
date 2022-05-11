@@ -13,7 +13,7 @@ export default function ComposeBlogPage() {
   return (
     <>
       <Head>
-        <title>FizzBuzz Blog - Write Blog</title>
+        <title>FizzBuzz.Blog - Write Blog</title>
         <meta
           name="description"
           content="FizzBuzz is the personal blog to document learning experiences, Tips, Standard Procedures, Reusable components and links related to Web development, Data Analysis and Programming."

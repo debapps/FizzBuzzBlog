@@ -13,7 +13,7 @@ function AdminPage() {
   return (
     <>
       <Head>
-        <title>FizzBuzz Blog - Admin</title>
+        <title>FizzBuzz.Blog - Admin</title>
         <meta
           name="description"
           content="FizzBuzz is the personal blog to document learning experiences, Tips, Standard Procedures, Reusable components and links related to Web development, Data Analysis and Programming."

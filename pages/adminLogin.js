@@ -51,7 +51,7 @@ export default function AdminLogin() {
   return (
     <>
       <Head>
-        <title>FizzBuzz Blog - Admin Login</title>
+        <title>FizzBuzz.Blog - Admin Login</title>
         <meta
           name="description"
           content="FizzBuzz is the personal blog to document learning experiences, Tips, Standard Procedures, Reusable components and links related to Web development, Data Analysis and Programming."

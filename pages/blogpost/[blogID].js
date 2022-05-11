@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import React, { useContext } from "react";
 import BlogContext from "../../components/context/blog/blogContext";
+import Footer from "../../components/Footer";
 import { formatDate } from "../../utilities/dateFormat";
 import Link from "next/link";
 import Image from "next/image";
@@ -28,7 +29,7 @@ const Blog = () => {
   return (
     <>
       <Head>
-        <title>FizzBuzz Blog - {blogPost.title}</title>
+        <title>FizzBuzz.Blog - {blogPost.title}</title>
         <meta
           name="description"
           content="FizzBuzz is the personal blog to document learning experiences, Tips, Standard Procedures, Reusable components and links related to Web development, Data Analysis and Programming."

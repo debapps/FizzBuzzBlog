@@ -4,6 +4,7 @@ import Head from "next/head";
 import { MdAdminPanelSettings } from "react-icons/md";
 import AuthContext from "../components/context/auth/authContext";
 import Footer from "../components/Footer";
+import HeadComponent from "../components/HeadComponent";
 
 export default function AdminLogin() {
   // Get the auth context.
@@ -50,33 +51,7 @@ export default function AdminLogin() {
 
   return (
     <>
-      <Head>
-        <title>FizzBuzz.Blog - Admin Login</title>
-        <meta
-          name="description"
-          content="FizzBuzz is the personal blog to document learning experiences, Tips, Standard Procedures, Reusable components and links related to Web development, Data Analysis and Programming."
-        />
-
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-      </Head>
-
+      <HeadComponent title="FizzBuzz.Blog - Admin Login" />
       <main className="flex flex-col justify-center my-20 p-8">
         <div className="px-10 xs:p-0 mx-auto w-full md:w-[40%]">
           <div className="text-4xl mb-5 flex flex-col items-center justify-center text-indigo-500 hover:text-purple-500">

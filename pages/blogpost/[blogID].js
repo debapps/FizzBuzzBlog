@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import { formatDate } from "../../utilities/dateFormat";
 import Link from "next/link";
 import Image from "next/image";
+import HeadComponent from "../../components/HeadComponent";
 
 const Blog = () => {
   // Get the blog context.
@@ -28,32 +29,7 @@ const Blog = () => {
 
   return (
     <>
-      <Head>
-        <title>FizzBuzz.Blog - {blogPost.title}</title>
-        <meta
-          name="description"
-          content="FizzBuzz is the personal blog to document learning experiences, Tips, Standard Procedures, Reusable components and links related to Web development, Data Analysis and Programming."
-        />
-
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/favicon/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/favicon/site.webmanifest" />
-      </Head>
+      <HeadComponent title={`FizzBuzz.Blog - ${blogPost.title}`} />
       <main className="container px-5 py-10 mb-64 mx-auto">
         <div className="flex flex-col w-full mb-12">
           <h1 className="sm:text-3xl text-center text-2xl font-medium font-oswald mb-4 text-gray-900">

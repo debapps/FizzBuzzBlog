@@ -1,9 +1,49 @@
-import React from "react";
+import React, { useRef, useContext } from "react";
 import Head from "next/head";
 import Footer from "../components/Footer";
 import HeadComponent from "../components/HeadComponent";
+import FeedContext from "../components/context/feedback/feedContext";
 
 export default function Contact() {
+  // Get the reference hooks.
+  let name = useRef(null);
+  let email = useRef(null);
+  let comments = useRef(null);
+
+  // Get the feedback context.
+  const feedContext = useContext(FeedContext);
+  const { submitFeed } = feedContext;
+
+  // This function called when button is clicked and the feedback will be submitted to database.
+  async function handleOnClick(event) {
+    event.preventDefault();
+
+    // Create the feedback object.
+    let feedObj = {
+      name: name.current.value,
+      email: email.current.value,
+      message: comments.current.value,
+    };
+
+    // Submit the feedback into the database.
+    const { success, message } = await submitFeed(feedObj);
+
+    // Show the response.
+    if (success) {
+      clearFeed();
+      alert(message);
+    } else {
+      alert(message);
+    }
+  }
+
+  // This clears the contact page.
+  function clearFeed() {
+    name.current.value = null;
+    email.current.value = null;
+    comments.current.value = null;
+  }
+
   return (
     <>
       <HeadComponent title="FizzBuzz.Blog - Contact Us" />
@@ -30,7 +70,7 @@ export default function Contact() {
                   </label>
                   <input
                     type="text"
-                    id="name"
+                    ref={name}
                     name="name"
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
@@ -46,7 +86,7 @@ export default function Contact() {
                   </label>
                   <input
                     type="email"
-                    id="email"
+                    ref={email}
                     name="email"
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
@@ -61,14 +101,17 @@ export default function Contact() {
                     Message
                   </label>
                   <textarea
-                    id="message"
+                    ref={comments}
                     name="message"
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                   ></textarea>
                 </div>
               </div>
               <div className="p-2 w-full">
-                <button className="flex mx-auto text-white bg-indigo-500 hover:bg-purple-500 border-0 py-2 px-8 focus:outline-none  rounded text-lg">
+                <button
+                  onClick={handleOnClick}
+                  className="flex mx-auto text-white bg-indigo-500 hover:bg-purple-500 border-0 py-2 px-8 focus:outline-none  rounded text-lg"
+                >
                   Reach Us
                 </button>
               </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { SiWritedotas } from "react-icons/si";
 import { FaUserCircle } from "react-icons/fa";
 import { MdOutlineManageAccounts } from "react-icons/md";
+import { FaComments } from "react-icons/fa";
 import Link from "next/link";
 
 export default function AdminPanel() {
@@ -48,6 +49,18 @@ export default function AdminPanel() {
               </span>
               <span className="font-montserrat font-semibold">
                 Create New Admin User.
+              </span>
+            </div>
+          </a>
+        </Link>
+        <Link href={"/feedbacks"} passHref>
+          <a className="p-2 sm:w-1/2 w-full">
+            <div className="bg-gray-100 text-indigo-500 hover:text-purple-500 rounded flex flex-row space-x-2 p-4 h-full items-center">
+              <span className="text-2xl">
+                <FaComments />
+              </span>
+              <span className="font-montserrat font-semibold">
+                Check Feedbacks
               </span>
             </div>
           </a>

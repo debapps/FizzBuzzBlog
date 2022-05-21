@@ -75,7 +75,6 @@ export default function ComposeBlog() {
 
     // Get image upload response.
     let imgResponse = await uploadImg();
-    console.log(imgResponse);
 
     // Prepare the blog post object.
     const blogPostObj = {

@@ -1,7 +1,6 @@
-import React, { useContext, useRef } from "react";
-import Head from "next/head";
-import AdminPanel from "../components/AdminPanel";
+import React, { useContext } from "react";
 import AuthContext from "../components/context/auth/authContext";
+import AdminPanel from "../components/AdminPanel";
 import AdminLogin from "./adminLogin";
 import Footer from "../components/Footer";
 import HeadComponent from "../components/HeadComponent";

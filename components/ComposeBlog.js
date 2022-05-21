@@ -1,11 +1,11 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import ShowDown from "showdown";
 import { useRouter } from "next/router";
 import AuthContext from "./context/auth/authContext";
 import BlogContext from "./context/blog/blogContext";
 import { callCloudAPI } from "../utilities/callAPI";
 
-const cloudAPIURL = process.env.NEXT_PUBLIC_CLOUD_URL;
+const cloudURL = process.env.NEXT_PUBLIC_CLOUD_URL;
 
 export default function ComposeBlog() {
   // Showdown converter configurations.
@@ -24,6 +24,11 @@ export default function ComposeBlog() {
   // Get the auth context.
   let authContext = useContext(AuthContext);
   const { user, getUserDetails } = authContext;
+
+  // Load the user Details.
+  useEffect(() => {
+    getUserDetails();
+  });
 
   // Initialize the reference of the form field.
   let title = useRef(null);
@@ -47,10 +52,14 @@ export default function ComposeBlog() {
     formData.append("file", uploadFile);
     formData.append("upload_preset", "fizzbuzz");
 
+    // Create the cloudinary api url for image upload.
+    let APIEndPoint = "/image/upload";
+    let cloudAPIURL = cloudURL + APIEndPoint;
+
     try {
       // Upload the Image into Cloudinary and get the image URL.
       const cloudResponse = await callCloudAPI(cloudAPIURL, formData);
-      return cloudResponse.secure_url;
+      return cloudResponse;
     } catch (error) {
       console.log(error.message);
     }
@@ -61,11 +70,12 @@ export default function ComposeBlog() {
     event.preventDefault();
 
     // Get the author name.
-    await getUserDetails();
+    // await getUserDetails();
     let authorName = user.userName;
 
-    // Get image upload url.
-    let imageURL = await uploadImg();
+    // Get image upload response.
+    let imgResponse = await uploadImg();
+    console.log(imgResponse);
 
     // Prepare the blog post object.
     const blogPostObj = {
@@ -73,7 +83,8 @@ export default function ComposeBlog() {
       category: category.current.value,
       author: authorName,
       introduction: introduction.current.value,
-      blogImageURL: imageURL,
+      blogImageURL: imgResponse.secure_url,
+      blogImageID: imgResponse.public_id,
       content: getHTML(content.current.value),
     };
 
@@ -144,15 +155,19 @@ export default function ComposeBlog() {
               />
             </div>
             <div className="flex flex-col">
-              <button
-                onClick={(event) => {
-                  event.preventDefault();
-                  imageFile.current.click();
-                }}
-                className="text-white font-montserrat font-semibold bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black p-2 rounded-lg"
-              >
-                Upload Image
-              </button>
+              {uploadFile ? (
+                <p>Image Uploaded</p>
+              ) : (
+                <button
+                  onClick={(event) => {
+                    event.preventDefault();
+                    imageFile.current.click();
+                  }}
+                  className="text-white font-montserrat font-semibold bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black p-2 rounded-lg"
+                >
+                  Upload Image
+                </button>
+              )}
               <input
                 className="hidden"
                 type="file"

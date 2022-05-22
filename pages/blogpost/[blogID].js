@@ -1,17 +1,21 @@
 import { useRouter } from "next/router";
-import Head from "next/head";
 import React, { useContext } from "react";
 import BlogContext from "../../components/context/blog/blogContext";
-import Footer from "../../components/Footer";
+import AuthContext from "../../components/context/auth/authContext";
 import { formatDate } from "../../utilities/dateFormat";
 import Link from "next/link";
 import Image from "next/image";
 import HeadComponent from "../../components/HeadComponent";
+import { AiFillDelete } from "react-icons/ai";
 
 const Blog = () => {
   // Get the blog context.
   let blogContext = useContext(BlogContext);
-  const { blogs } = blogContext;
+  const { blogs, deleteBlogPost } = blogContext;
+
+  // Get the auth context.
+  let authContext = useContext(AuthContext);
+  const { authToken } = authContext;
 
   // Get the blog ID.
   const router = useRouter();
@@ -27,10 +31,34 @@ const Blog = () => {
     return { __html: htmlText };
   }
 
+  // This Function deletes the specific blog post.
+  async function handleDelete() {
+    // Delete the blog post.
+    let { success, message } = await deleteBlogPost(blogID);
+
+    // Show the response.
+    if (success) {
+      alert(message);
+      router.push("/blogs");
+    } else {
+      alert(message);
+    }
+  }
+
   return (
     <>
       <HeadComponent title={`FizzBuzz.Blog - ${blogPost.title}`} />
       <main className="container px-5 py-10 mb-64 mx-auto">
+        {authToken && (
+          <div className="lg:w-2/5 inline-flex lg:justify-end mb-5">
+            <button
+              onClick={handleDelete}
+              className="inline-flex ml-2 bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0"
+            >
+              <AiFillDelete />
+            </button>
+          </div>
+        )}
         <div className="flex flex-col w-full mb-12">
           <h1 className="sm:text-3xl text-center text-2xl font-medium font-oswald mb-4 text-gray-900">
             {blogPost.title}
@@ -58,7 +86,7 @@ const Blog = () => {
           ></p>
           <div className="mx-auto my-10">
             <Link href={"/blogs"} passHref>
-              <a className="w-fit font-montserrat font-semibold text-white bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black py-2 px-8 focus:outline-none rounded text-lg">
+              <a className="w-fit font-montserrat font-semibold text-white bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black py-2 px-8 focus:outline-none rounded-lg text-lg">
                 Read more blogs
               </a>
             </Link>

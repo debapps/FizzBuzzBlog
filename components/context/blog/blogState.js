@@ -38,7 +38,7 @@ export default function BlogState(props) {
 
   // This function gets the blog data from UI and store it to database using API EndPoint.
   async function submitBlogPost(blogPostObj) {
-    // Get the auth header.
+    // Get the header.
     const myHeader = getJSONHeader();
 
     // Get the host address and create the URL.
@@ -51,8 +51,25 @@ export default function BlogState(props) {
     return response;
   }
 
+  // This function deletes a specific blog post.
+  async function deleteBlogPost(blogID) {
+    // Get the header.
+    const myHeader = getJSONHeader();
+
+    // Get the host address and create the URL.
+    let apiEndPoint = `/api/delete/${blogID}`;
+    const url = host + apiEndPoint;
+
+    // Call the blog API.
+    let response = await callBlogAPI(url, myHeader, "POST");
+
+    return response;
+  }
+
   return (
-    <BlogContext.Provider value={{ blogs, fetchAllBlogs, submitBlogPost }}>
+    <BlogContext.Provider
+      value={{ blogs, fetchAllBlogs, submitBlogPost, deleteBlogPost }}
+    >
       {props.children}
     </BlogContext.Provider>
   );

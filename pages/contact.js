@@ -2,6 +2,7 @@ import React, { useRef, useContext } from "react";
 import Footer from "../components/Footer";
 import HeadComponent from "../components/HeadComponent";
 import FeedContext from "../components/context/feedback/feedContext";
+import AlertContext from "../components/context/alert/alertContext";
 
 export default function Contact() {
   // Get the reference hooks.
@@ -12,6 +13,10 @@ export default function Contact() {
   // Get the feedback context.
   const feedContext = useContext(FeedContext);
   const { submitFeed } = feedContext;
+
+  // Get the alert context.
+  let alertContext = useContext(AlertContext);
+  const { showAlert } = alertContext;
 
   // This function called when button is clicked and the feedback will be submitted to database.
   async function handleOnClick(event) {
@@ -30,9 +35,9 @@ export default function Contact() {
     // Show the response.
     if (success) {
       clearFeed();
-      alert(message);
+      showAlert("success", message);
     } else {
-      alert(message);
+      showAlert("error", message);
     }
   }
 

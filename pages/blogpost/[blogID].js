@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import BlogContext from "../../components/context/blog/blogContext";
 import AuthContext from "../../components/context/auth/authContext";
+import AlertContext from "../../components/context/alert/alertContext";
 import { formatDate } from "../../utilities/dateFormat";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,6 +17,10 @@ const Blog = () => {
   // Get the auth context.
   let authContext = useContext(AuthContext);
   const { authToken } = authContext;
+
+  // Get the alert context.
+  let alertContext = useContext(AlertContext);
+  const { showAlert } = alertContext;
 
   // Get the blog ID.
   const router = useRouter();
@@ -38,10 +43,10 @@ const Blog = () => {
 
     // Show the response.
     if (success) {
-      alert(message);
+      showAlert("success", message);
       router.push("/blogs");
     } else {
-      alert(message);
+      showAlert("error", message);
     }
   }
 

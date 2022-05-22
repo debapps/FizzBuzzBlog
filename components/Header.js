@@ -5,11 +5,17 @@ import { useRouter } from "next/router";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { RiLogoutCircleLine, RiFunctionFill } from "react-icons/ri";
 import AuthContext from "./context/auth/authContext";
+import AlertContext from "./context/alert/alertContext";
+import ToastAlert from "./ToastAlert";
 
 export default function Header() {
   // Get the auth context.
   const authContext = useContext(AuthContext);
   const { authToken, logOutUser } = authContext;
+
+  // Get the alert context.
+  const alertContext = useContext(AlertContext);
+  const { alertObj } = alertContext;
 
   // Get the router.
   const router = useRouter();
@@ -84,6 +90,7 @@ export default function Header() {
           )}
         </div>
       </div>
+      <ToastAlert alert={alertObj} />
     </header>
   );
 }

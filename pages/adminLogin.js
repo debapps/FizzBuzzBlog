@@ -2,6 +2,7 @@ import React, { useRef, useContext } from "react";
 import { useRouter } from "next/router";
 import { MdAdminPanelSettings } from "react-icons/md";
 import AuthContext from "../components/context/auth/authContext";
+import AlertContext from "../components/context/alert/alertContext";
 import Footer from "../components/Footer";
 import HeadComponent from "../components/HeadComponent";
 
@@ -9,6 +10,10 @@ export default function AdminLogin() {
   // Get the auth context.
   const authContext = useContext(AuthContext);
   const { adminLogin } = authContext;
+
+  // Get the alert context.
+  let alertContext = useContext(AlertContext);
+  const { showAlert } = alertContext;
 
   // useRef Hooks.
   const email = useRef(null);
@@ -37,7 +42,7 @@ export default function AdminLogin() {
     } else {
       // Clear the login form.
       clearForm();
-      alert("Login is not successfull!");
+      showAlert("error", message);
     }
   }
 

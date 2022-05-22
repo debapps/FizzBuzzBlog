@@ -1,10 +1,15 @@
 import React, { useContext, useRef, useState } from "react";
 import AuthContext from "./context/auth/authContext";
+import AlertContext from "./context/alert/alertContext";
 
 export default function UserForm() {
   // Get the auth context.
   let authContext = useContext(AuthContext);
   const { createUser } = authContext;
+
+  // Get the alert context.
+  let alertContext = useContext(AlertContext);
+  const { showAlert } = alertContext;
 
   // useRef hooks for form text feilds.
   let userName = useRef(null);
@@ -43,7 +48,7 @@ export default function UserForm() {
     if (password.current.value !== confPasswd.current.value) {
       password.current.value = null;
       confPasswd.current.value = null;
-      alert("Confirm the password!");
+      showAlert("warning", "Confirm the password!");
       return;
     }
 
@@ -60,11 +65,11 @@ export default function UserForm() {
 
     // Show the response.
     if (success) {
-      alert(message);
+      showAlert("success", message);
       // Clear the form data.
       clearForm();
     } else {
-      alert(message);
+      showAlert("error", message);
     }
   }
 

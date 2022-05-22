@@ -3,6 +3,7 @@ import ShowDown from "showdown";
 import { useRouter } from "next/router";
 import AuthContext from "./context/auth/authContext";
 import BlogContext from "./context/blog/blogContext";
+import AlertContext from "./context/alert/alertContext";
 import { callCloudAPI } from "../utilities/callAPI";
 
 const cloudURL = process.env.NEXT_PUBLIC_CLOUD_URL;
@@ -24,6 +25,10 @@ export default function ComposeBlog() {
   // Get the auth context.
   let authContext = useContext(AuthContext);
   const { user, getUserDetails } = authContext;
+
+  // Get the alert context.
+  let alertContext = useContext(AlertContext);
+  const { showAlert } = alertContext;
 
   // Load the user Details.
   useEffect(() => {
@@ -93,10 +98,10 @@ export default function ComposeBlog() {
     // Show the response.
     if (success) {
       clearForm();
-      alert(message);
+      showAlert("success", message);
       router.push("/blogs");
     } else {
-      alert(message);
+      showAlert("error", message);
     }
   }
 

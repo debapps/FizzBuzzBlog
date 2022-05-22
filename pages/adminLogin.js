@@ -32,13 +32,12 @@ export default function AdminLogin() {
     // Log in admin.
     const { success, message } = await adminLogin(loginBody);
 
-    // Clear the login form.
-    clearForm();
-
     // Show the response.
     if (success) {
       router.push("/admin");
     } else {
+      // Clear the login form.
+      clearForm();
       alert("Login is not successfull!");
     }
   }

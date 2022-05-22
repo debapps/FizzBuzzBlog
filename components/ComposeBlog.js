@@ -106,6 +106,7 @@ export default function ComposeBlog() {
     category.current.value = null;
     introduction.current.value = null;
     content.current.value = null;
+    setUploadFile(null);
   }
 
   // This function converts markdown text to HTML text.
@@ -155,7 +156,9 @@ export default function ComposeBlog() {
             </div>
             <div className="flex flex-col">
               {uploadFile ? (
-                <p>Image Uploaded</p>
+                <p className="text-base md:text-lg font-zilla leading-7 text-indigo-500 hover:text-purple-500 mb-2">
+                  Image selected
+                </p>
               ) : (
                 <button
                   onClick={(event) => {
@@ -221,6 +224,7 @@ export default function ComposeBlog() {
           <button
             className="text-white font-montserrat font-semibold bg-indigo-500 hover:bg-purple-500 border-2 hover:border-black p-2 rounded-lg"
             type="reset"
+            onClick={clearForm}
           >
             Cancel
           </button>

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Head from "next/head";
 import AuthContext from "../components/context/auth/authContext";
 import ComposeBlog from "../components/ComposeBlog";
 import AdminLogin from "./adminLogin";

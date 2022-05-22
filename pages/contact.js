@@ -1,5 +1,4 @@
 import React, { useRef, useContext } from "react";
-import Head from "next/head";
 import Footer from "../components/Footer";
 import HeadComponent from "../components/HeadComponent";
 import FeedContext from "../components/context/feedback/feedContext";

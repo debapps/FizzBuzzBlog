@@ -1,5 +1,4 @@
 import React from "react";
-import Head from "next/head";
 import Footer from "../components/Footer";
 import Image from "next/image";
 import HeadComponent from "../components/HeadComponent";

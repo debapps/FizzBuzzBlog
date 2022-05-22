@@ -1,4 +1,3 @@
-import Head from "next/head";
 import HeroElement from "../components/HeroElement";
 import LatestContent from "../components/LatestContent";
 import Footer from "../components/Footer";

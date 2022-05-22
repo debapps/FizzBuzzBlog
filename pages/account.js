@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Head from "next/head";
 import UserAccount from "../components/UserAccount";
 import AdminLogin from "./adminLogin";
 import AuthContext from "../components/context/auth/authContext";

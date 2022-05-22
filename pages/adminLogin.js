@@ -1,6 +1,5 @@
 import React, { useRef, useContext } from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import { MdAdminPanelSettings } from "react-icons/md";
 import AuthContext from "../components/context/auth/authContext";
 import Footer from "../components/Footer";

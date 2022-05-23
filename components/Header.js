@@ -2,11 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { useRouter } from "next/router";
-import { MdAdminPanelSettings } from "react-icons/md";
-import { RiLogoutCircleLine, RiFunctionFill } from "react-icons/ri";
+import ToastAlert from "./ToastAlert";
 import AuthContext from "./context/auth/authContext";
 import AlertContext from "./context/alert/alertContext";
-import ToastAlert from "./ToastAlert";
+import { MdAdminPanelSettings } from "react-icons/md";
+import { RiLogoutCircleLine, RiFunctionFill } from "react-icons/ri";
+import Tooltip from "@mui/material/Tooltip";
+import Zoom from "@mui/material/Zoom";
 
 export default function Header() {
   // Get the auth context.
@@ -70,22 +72,32 @@ export default function Header() {
           {authToken ? (
             <div className="inline-flex justify-between items-center">
               <Link href={"/admin"} passHref>
-                <a className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0">
-                  <RiFunctionFill />
-                </a>
+                <Tooltip TransitionComponent={Zoom} title="Admin Page" arrow>
+                  <a>
+                    <button className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0">
+                      <RiFunctionFill />
+                    </button>
+                  </a>
+                </Tooltip>
               </Link>
-              <button
-                onClick={handleLogout}
-                className="inline-flex ml-2 bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0"
-              >
-                <RiLogoutCircleLine />
-              </button>
+              <Tooltip TransitionComponent={Zoom} title="Logout" arrow>
+                <button
+                  onClick={handleLogout}
+                  className="inline-flex ml-2 bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0"
+                >
+                  <RiLogoutCircleLine />
+                </button>
+              </Tooltip>
             </div>
           ) : (
             <Link href={"/adminLogin"} passHref>
-              <a className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0">
-                <MdAdminPanelSettings />
-              </a>
+              <Tooltip TransitionComponent={Zoom} title="Admin Login" arrow>
+                <a>
+                  <button className="inline-flex bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0">
+                    <MdAdminPanelSettings />
+                  </button>
+                </a>
+              </Tooltip>
             </Link>
           )}
         </div>

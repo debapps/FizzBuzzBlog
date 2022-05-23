@@ -1,13 +1,15 @@
+import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
+import { formatDate } from "../../utilities/dateFormat";
+import HeadComponent from "../../components/HeadComponent";
+import { AiFillDelete } from "react-icons/ai";
 import BlogContext from "../../components/context/blog/blogContext";
 import AuthContext from "../../components/context/auth/authContext";
 import AlertContext from "../../components/context/alert/alertContext";
-import { formatDate } from "../../utilities/dateFormat";
-import Link from "next/link";
-import Image from "next/image";
-import HeadComponent from "../../components/HeadComponent";
-import { AiFillDelete } from "react-icons/ai";
+import Tooltip from "@mui/material/Tooltip";
+import Zoom from "@mui/material/Zoom";
 
 const Blog = () => {
   // Get the blog context.
@@ -56,12 +58,19 @@ const Blog = () => {
       <main className="container px-5 py-10 mb-64 mx-auto">
         {authToken && (
           <div className="lg:w-2/5 inline-flex lg:justify-end mb-5">
-            <button
-              onClick={handleDelete}
-              className="inline-flex ml-2 bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0"
+            <Tooltip
+              TransitionComponent={Zoom}
+              title="Delete this Blog"
+              placement="top"
+              arrow
             >
-              <AiFillDelete />
-            </button>
+              <button
+                onClick={handleDelete}
+                className="inline-flex ml-2 bg-indigo-500 hover:bg-purple-500 text-white text-2xl items-center border-0 p-3 focus:outline-none rounded-full mt-4 md:mt-0"
+              >
+                <AiFillDelete />
+              </button>
+            </Tooltip>
           </div>
         )}
         <div className="flex flex-col w-full mb-12">

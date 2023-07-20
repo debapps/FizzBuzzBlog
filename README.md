@@ -21,6 +21,8 @@ Blogs are written in markdown format.
 
 ### Production
 
+[FizzBuzz Blog.](https://fizzbuzzblog.vercel.app)
+
 ### Test
 
-http://localhost:3000
+[FizzBuzz Blog (Test)](http://localhost:3000)

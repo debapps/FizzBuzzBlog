@@ -1,27 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&family=Righteous&family=Russo+One&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer base {
+    .preview {
+        @apply text-sm md:text-lg font-poppins font-medium tracking-wide;
+    }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+    .preview h1 {
+        @apply text-3xl md:text-5xl font-righteous font-extrabold py-10 leading-10 tracking-widest;
+    }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    .preview h2 {
+        @apply text-xl md:text-3xl font-righteous font-bold py-10 leading-10 tracking-wider;
+    }
+
+    .preview h3 {
+        @apply text-lg md:text-xl font-righteous font-bold py-10 leading-10 tracking-wide;
+    }
+    .preview p {
+        @apply py-2 leading-8 tracking-normal;
+    }
+
+    .preview > p:first-child::first-letter {
+        @apply font-bold text-6xl;
+    }
+
+    .preview p > img {
+        @apply w-2/3 rounded-lg block pt-10 pb-7 mx-auto;
+    }
+
+    .preview p > img + em {
+        @apply text-base italic block w-full text-center pb-10;
+    }
+
+    .preview blockquote {
+        @apply block p-5 mx-10 my-5 bg-brand-color2 border-l-8 border-l-brand-color1 text-base md:text-lg;
+    }
+
+    .preview strong {
+        @apply font-bold font-russo;
+    }
+
+    .preview em {
+        @apply italic;
+    }
+
+    .preview a {
+        @apply text-purple-600;
+    }
+
+    .preview a:hover {
+        @apply text-fuchsia-200;
+    }
+
+    .preview pre {
+        @apply bg-amber-950 text-fuchsia-200 block mx-auto w-full lg:w-3/4 p-5 m-5 rounded-xl;
+    }
+
+    .preview pre > code {
+        @apply text-xs md:text-base font-medium font-mono break-words;
+    }
+
+    .preview code {
+        @apply bg-purple-950 text-fuchsia-200 p-2 rounded-lg text-xs md:text-base font-medium font-mono break-words;
+    }
+
+    .preview ul {
+        @apply list-disc py-1 pl-10 m-2;
+    }
+
+    .preview ol {
+        @apply list-decimal py-1 pl-10 m-2;
+    }
 }

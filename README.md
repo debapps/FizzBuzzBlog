@@ -1,6 +1,6 @@
 # FizzBuzz Blog
 
-FizzBuzz Blog is the personal blogging website for cutting-edge digital technology, sceince and innovation, cloud computing and web technologies.
+FizzBuzz Blog is the personal blogging website for cutting-edge digital technology, science and innovation, cloud computing and web technologies.
 
 The name of the blog is inspired by the popular programming problem - **FizzBuzz**, which is taught to the novice programmers in the basic foundation course of programming.
 

@@ -1,3 +1,5 @@
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import "./globals.css";
 
 export const metadata = {
@@ -29,7 +31,11 @@ export default function RootLayout({ children }) {
                 />
                 <link rel="manifest" href="/favicon/site.webmanifest" />
             </head>
-            <body>{children}</body>
+            <body>
+                <Header />
+                {children}
+                <Footer />
+            </body>
         </html>
     );
 }

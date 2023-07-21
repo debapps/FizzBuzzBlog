@@ -4,7 +4,9 @@ import Link from "next/link";
 
 export default function Logo({ text }) {
     return (
-        <section className="flex flex-col md:flex-row justify-center md:justify-between items-center space-y-2 md:space-x-2">
+        <Link
+            className="flex flex-col lg:flex-row justify-center lg:justify-between items-center space-y-2 lg:space-x-2"
+            href="/">
             <Image
                 className="rounded-full"
                 src={LogoImg}
@@ -12,11 +14,9 @@ export default function Logo({ text }) {
                 width={80}
                 height={80}
             />
-            <Link
-                href="/"
-                className="text-xl md:text-4xl px-2 py-1 font-righteous text-brand-color1">
+            <h1 className="text-xl lg:text-4xl px-2 py-1 font-righteous text-brand-color1">
                 {text}
-            </Link>
-        </section>
+            </h1>
+        </Link>
     );
 }

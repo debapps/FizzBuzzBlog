@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import "./globals.css";
 
 export const metadata = {
-    title: "Home | FizzBuzz Blog",
+    title: "Home | FizzBuzz Blog.",
     description:
         "FizzBuzz Blog is the personal blogging website for cutting-edge digital technology, sceince and innovation, cloud computing and web technologies.",
 };

@@ -4,7 +4,7 @@ export const navData = [
         href: "/",
     },
     {
-        title: "About",
+        title: "Our Story",
         href: "/about",
     },
     {

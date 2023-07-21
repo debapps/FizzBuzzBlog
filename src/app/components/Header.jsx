@@ -6,14 +6,14 @@ import { navData } from "../../../public/site_data/navData";
 // Header Element.
 export default function Header() {
     return (
-        <header className="p-5 bg-gray-50 shadow-lg shadow-brand-color2 opacity-90 flex flex-row justify-between items-center md:fixed w-full">
+        <header className="p-5 bg-gray-50 shadow-lg shadow-brand-color2 opacity-90 flex flex-row justify-between items-center lg:fixed w-full">
             <span>
                 <Logo text="FizzBuzz Blog." />
             </span>
-            <span className="hidden md:block">
+            <span className="hidden lg:block">
                 <NavBar links={navData} />
             </span>
-            <span className="md:hidden">
+            <span className="lg:hidden">
                 <VerticalMenu links={navData} />
             </span>
         </header>

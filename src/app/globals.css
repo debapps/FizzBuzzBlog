@@ -10,15 +10,15 @@
     }
 
     .preview h1 {
-        @apply text-3xl md:text-5xl font-righteous font-extrabold py-10 leading-10 tracking-widest;
+        @apply text-brand-color1 text-3xl md:text-5xl font-righteous font-extrabold py-10 leading-10 tracking-widest;
     }
 
     .preview h2 {
-        @apply text-xl md:text-3xl font-righteous font-bold py-10 leading-10 tracking-wider;
+        @apply text-brand-color1 text-xl md:text-3xl font-righteous font-bold py-10 leading-10 tracking-wider;
     }
 
     .preview h3 {
-        @apply text-lg md:text-xl font-righteous font-bold py-10 leading-10 tracking-wide;
+        @apply text-brand-color1 text-lg md:text-xl font-righteous font-bold py-10 leading-10 tracking-wide;
     }
     .preview p {
         @apply py-2 leading-8 tracking-normal;
@@ -49,15 +49,15 @@
     }
 
     .preview a {
-        @apply text-purple-600;
+        @apply text-brand-color1 bg-brand-color2;
     }
 
     .preview a:hover {
-        @apply text-fuchsia-200;
+        @apply text-brand-color2 bg-brand-color1;
     }
 
     .preview pre {
-        @apply bg-amber-950 text-fuchsia-200 block mx-auto w-full lg:w-3/4 p-5 m-5 rounded-xl;
+        @apply bg-brand-color1 text-brand-color2 block mx-auto min-w-fit p-5 m-5 rounded-xl;
     }
 
     .preview pre > code {
@@ -65,7 +65,7 @@
     }
 
     .preview code {
-        @apply bg-purple-950 text-fuchsia-200 p-2 rounded-lg text-xs md:text-base font-medium font-mono break-words;
+        @apply bg-brand-color1 text-brand-color2 p-2 rounded-lg text-xs md:text-base font-medium font-mono break-words;
     }
 
     .preview ul {
@@ -77,6 +77,6 @@
     }
 
     .blogtitle {
-        @apply text-xl md:text-3xl font-russo bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-brand-color1 to-teal-400;
+        @apply font-russo bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-brand-color1 to-teal-400;
     }
 }

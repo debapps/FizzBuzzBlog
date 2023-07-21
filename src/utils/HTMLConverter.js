@@ -11,7 +11,7 @@ export default function getHTML(inputText) {
 
     // Remove extra spaces and newline.
     const htmlText = convertText
-        .replace(/[\r\n]+/gm, "")
+        // .replace(/[\r\n]+/gm, "")
         .split(/[ ]+/)
         .join(" ");
 

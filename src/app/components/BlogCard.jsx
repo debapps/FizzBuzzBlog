@@ -26,7 +26,9 @@ export default function BlogCard({
                     />
 
                     {/* Blog title */}
-                    <h2 className="blogtitle pt-5 pb-2">{title}</h2>
+                    <h2 className="blogtitle text-xl md:text-3xl pt-5 pb-2">
+                        {title}
+                    </h2>
 
                     {/* Blog Category */}
                     <h3 className="font-russo text-xs tracking-widest mt-2 mb-5 bg-brand-color1 text-brand-color2 p-2 max-w-fit">

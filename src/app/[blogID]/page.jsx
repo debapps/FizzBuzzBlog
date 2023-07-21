@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import myImg from "../../../public/site_images/about-me-1.jpg";
 import { getDateFormatted } from "../../utils/FormatDate";
 import { getBlogContent } from "@/utils/BlogData";
 

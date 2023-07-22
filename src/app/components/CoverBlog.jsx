@@ -1,7 +1,9 @@
+"use client";
 import { getDateFormatted } from "@/utils/FormatDate";
 import myImg from "../../../public/site_images/about-me-1.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import Grow from "@mui/material/Grow";
 
 export default function CoverBlog({
     blogID,
@@ -16,15 +18,17 @@ export default function CoverBlog({
         <section>
             <div className="container px-5 py-24 mx-auto flex flex-col">
                 <div className="lg:w-4/6 mx-auto">
-                    <div className="rounded-lg h-64 overflow-hidden">
-                        <Image
-                            alt="content"
-                            className="object-cover object-center h-full w-full"
-                            src={coverImg}
-                            width={2000}
-                            height={1400}
-                        />
-                    </div>
+                    <Grow in={true}>
+                        <div className="rounded-lg h-64 overflow-hidden">
+                            <Image
+                                alt="content"
+                                className="object-cover object-center h-full w-full"
+                                src={coverImg}
+                                width={2000}
+                                height={1400}
+                            />
+                        </div>
+                    </Grow>
 
                     <div className="flex flex-col sm:flex-row mt-10">
                         <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">

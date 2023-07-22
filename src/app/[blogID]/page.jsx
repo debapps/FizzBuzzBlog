@@ -40,12 +40,22 @@ export default function BlogDetails({ params }) {
                         {title}
                     </h1>
 
-                    {/* Blog author and publication date */}
-                    <p className="mb-5 font-poppins font-thin text-sm md:text-base text-gray-400 flex flex-row justify-start space-x-5 tracking-wider">
+                    {/* Blog publication date */}
+                    <p className="mb-5 font-poppins font-thin text-sm md:text-base text-gray-400">
                         <span>{getDateFormatted(date)}</span>
-                        <span>||</span>
-                        <span className="font-bold">{author}</span>
                     </p>
+
+                    {/* Blog author and picture */}
+                    <div className="mb-5 flex flex-row justify-start items-center space-x-5 tracking-wider">
+                        <Image
+                            className="w-20 h-20 rounded-full"
+                            src={myImg}
+                            alt="author-image"
+                        />
+                        <span className="font-poppins font-bold text-sm md:text-base text-gray-400">
+                            {author}
+                        </span>
+                    </div>
 
                     {/* Blog Synopsis */}
                     <p className="mb-5 font-poppins font-thin text-base md:text-lg text-gray-600 italic">

@@ -13,7 +13,7 @@ The website or the webpage is called static when the content of the page is not 
 
 > **HTML (Hyper-Text Markup Language)** builds the structure of the webpage. This is the minimum component of a webpage/website. **CSS (Cascaded Style Sheet)** comprises the looks, layouts, color, styles and feel of the website. **Vanilla JavaScript** provides some functionalities and user interaction of the website.
 
-> We can host a static website on AWS easily using **Amazon S3 (Simple Storage Service)**. Amazon S3 is the object (any kind of file) storage service that >provides industry level scalability, availability, security, and performance. It also provides versioning feature where data object can be stored in >different versions. It is the backbone of many static websites.
+We can host a static website on AWS easily using **Amazon S3 (Simple Storage Service)**. Amazon S3 is the object (any kind of file) storage service that provides industry level scalability, availability, security, and performance. It also provides versioning feature where data object can be stored in different versions. It is the backbone of many static websites.
 
 Amazon S3 stores objects into containers called buckets. Bucket stores objects those are identified by key. Key is the full path of the object. It consists of prefix and object name. Suppose a S3 URL is as follows:
 

@@ -50,7 +50,7 @@ export default function AboutPage() {
                     </p>
                     <p className="text-base lg:text-xl font-poppins">
                         In {"today's"} world, technology, science innovation and
-                        artificial intelligence is growing in a lighting speed.
+                        artificial intelligence are growing in a lighting speed.
                         The idea flows in rapid pace.{" "}
                         <span className="font-righteous text-brand-color1 bg-brand-color2 p-1 rounded-sm">
                             FizzBuzz Blog.

@@ -19,30 +19,32 @@ export default function CoverBlog({
             <div className="container px-5 py-24 mx-auto flex flex-col">
                 <div className="lg:w-4/6 mx-auto">
                     <Grow in={true}>
-                        <div className="rounded-lg h-64 overflow-hidden">
+                        {/* Blog Image. */}
+                        <div className="rounded-lg h-72 overflow-hidden">
                             <Image
                                 alt="content"
                                 className="object-cover object-center h-full w-full"
                                 src={coverImg}
-                                width={2000}
-                                height={1400}
+                                width={1200}
+                                height={700}
                             />
                         </div>
                     </Grow>
 
                     <div className="flex flex-col sm:flex-row mt-10">
                         <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
+                            {/* Blog Author Image */}
                             <Image
                                 className="w-20 h-20 rounded-full inline-flex items-center justify-center"
                                 src={myImg}
                                 alt="my-image"
                             />
                             <div className="flex flex-col items-center text-center justify-center">
+                                {/* Blog author and publication date */}
                                 <h2 className="font-medium font-poppins mt-4 text-gray-900 text-lg">
                                     {author}
                                 </h2>
                                 <div className="w-12 h-1 bg-brand-color1 rounded mt-2 mb-4"></div>
-                                {/* Blog author and publication date */}
                                 <div className="text-sm font-poppins tracking-widest pb-2">
                                     {getDateFormatted(date)}
                                 </div>

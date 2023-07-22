@@ -1,6 +1,7 @@
 import Image from "next/image";
 import LogoImg from "../../../public/site_images/FizzBuzzBlog_Logo.png";
 import MyImg from "../../../public/site_images/about-me-1.jpg";
+import Link from "next/link";
 
 export const metadata = {
     title: "About | FizzBuzz Blog.",
@@ -21,7 +22,7 @@ export default function AboutPage() {
                 />
                 <div className="flex flex-col m-4 justify-center items-start space-y-4">
                     <h2 className="text-xl lg:text-4xl font-russo text-brand-color1 mb-2">
-                        About FizzBuzz Blog.
+                        The Story of FizzBuzz Blog.
                     </h2>
                     <p className="text-base lg:text-xl font-poppins">
                         <span className="font-righteous text-brand-color1 bg-brand-color2 p-1 rounded-sm">
@@ -47,6 +48,21 @@ export default function AboutPage() {
                         popular interview question for beginner level
                         programmers.
                     </p>
+                    <p className="text-base lg:text-xl font-poppins">
+                        In {"today's"} world, technology, science innovation and
+                        artificial intelligence is growing in a lighting speed.
+                        The idea flows in rapid pace.{" "}
+                        <span className="font-righteous text-brand-color1 bg-brand-color2 p-1 rounded-sm">
+                            FizzBuzz Blog.
+                        </span>{" "}
+                        is the place where I like to share my ideas, my growth
+                        journey to the world, so that, the next-gen can learn
+                        rapidly and grow simulteneously with the ever-changing
+                        technologies.
+                    </p>
+                    <p className="text-base lg:text-xl font-righteous text-brand-color1 bg-brand-color2 p-1 rounded-sm font-bold">
+                        Happy Reading ...
+                    </p>
                 </div>
             </article>
             <article className="flex flex-col lg:flex-row justify-center items-center mb-10">
@@ -60,24 +76,36 @@ export default function AboutPage() {
                             Debaditya Bhar
                         </span>
                         . I am a Softwere Engineer since 2010. I worked in
-                        different phases of software life cycles: requirement
-                        gathering, development, production implementation and
-                        support.
+                        different phases of software life cycles over a decade
+                        of my career journey on client side and offshore
+                        locations.
                     </p>
                     <p className="text-base lg:text-xl font-poppins">
                         I have worked in several technologies. I started my
-                        career in Mainframe Development. Then, I learned web
+                        career in Mainframe development. Then, I learned web
                         development and technologies. Meanwhile, I worked as
                         Data Analyst with Python. Finally, I work as AWS Cloud
                         Engineer.
                     </p>
                     <p className="text-base lg:text-xl font-poppins">
-                        I like to learn new things and share those with all as
-                        well. For this purpose, I started this blog.
+                        I like to write technical blogs and articles as well as
+                        books. Please find my E-book and Papepback on{" "}
+                        <strong>Amazon</strong> on Operating System:
                     </p>
-                    <p className="text-base lg:text-xl font-righteous text-brand-color1 bg-brand-color2 p-1 rounded-sm font-bold">
-                        Happy Reading ...
-                    </p>
+                    <Link
+                        className="text-base lg:text-xl font-poppins font-bold underline text-brand-color1 bg-brand-color2 hover:text-brand-color2 hover:bg-brand-color1"
+                        href={`https://a.co/d/07LfkzY`}
+                        target="_blank">
+                        E-Book: Notes on Operating System: An Introductory
+                        Course
+                    </Link>
+                    <Link
+                        className="text-base lg:text-xl font-poppins font-bold underline text-brand-color1 bg-brand-color2 hover:text-brand-color2 hover:bg-brand-color1"
+                        href={`https://a.co/d/4bFWipC`}
+                        target="_blank">
+                        Paperback: Notes on Operating System: An Introductory
+                        Course
+                    </Link>
                 </div>
                 <Image
                     className="m-4 rounded-full shadow-lg shadow-brand-color1"

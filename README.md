@@ -17,6 +17,22 @@ FizzBuzz Blog is developed using following technologies:
 
 Blogs are written in markdown format.
 
+## Run Development Server
+
+To run the application in development environment, You need to follow the below mentioned steps:
+
+1. Clone the github repository into your local machine using below command.
+
+`git clone https://github.com/debapps/FizzBuzzBlog.git`
+
+2. Install npm module using following command inside the application directory (FizzBuzzBlog)
+
+`npm install`
+
+3. Start the development server.
+
+`npm run dev`
+
 ## Application URL
 
 ### Production

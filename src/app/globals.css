@@ -56,7 +56,7 @@
         @apply text-brand-color2 bg-brand-color1;
     }
 
-    .preview pre {
+    /* .preview pre {
         @apply bg-brand-color1 text-brand-color2 block mx-auto min-w-fit p-5 m-5 rounded-xl;
     }
 
@@ -66,7 +66,54 @@
 
     .preview code {
         @apply bg-brand-color1 text-brand-color2 p-2 rounded-lg text-xs md:text-base font-medium font-mono break-words;
+    } */
+
+    /* --- ENHANCED CODE STYLES START --- */
+
+    .preview pre {
+        /* Background and Spacing */
+        /* Using a slightly darker neutral background for code blocks, similar to Gemini's clean look.
+           Consider using a specific neutral color (e.g., `zinc-800`, `gray-900`) instead of brand-color1
+           if brand-color1 is too bright or has a strong hue, for better code readability.
+           If brand-color1 is already a dark, subtle color, then it's fine. */
+        @apply bg-gray-900 text-gray-200 block mx-auto p-6 my-6 rounded-lg;
+
+        /* Shadows and Borders for Professionalism */
+        @apply shadow-xl border border-gray-700;
+
+        /* Handling long lines gracefully */
+        @apply overflow-x-auto whitespace-pre-wrap;
     }
+
+    .preview pre > code {
+        @apply text-xs md:text-base font-medium font-mono break-words;
+        /* Font and Text Size */
+        /* Adjusted font sizes for better responsiveness and readability */
+        /* @apply text-sm md:text-base lg:text-lg font-medium font-mono; */
+
+        /* Line height for readability */
+        line-height: 1.6;
+
+        /* Ensure code content wraps naturally within the pre, but also allows scrolling for very long lines */
+        /* @apply break-words; Prevents arbitrary word breaking, relies on whitespace-pre-wrap */
+    }
+
+    .preview code {
+        /* Inline code styling */
+        /* Using a slightly different background for inline code for distinction,
+           often a subtle variant of the main text background or a lighter gray. */
+        @apply bg-gray-900 text-gray-200 px-2 py-1 rounded-md;
+
+        /* Font and Text Size */
+        @apply text-xs md:text-sm font-medium font-mono;
+
+        @apply break-words;
+
+        /* Subtle shadow for emphasis */
+        @apply shadow-sm;
+    }
+
+    /* --- ENHANCED CODE STYLES END --- */
 
     .preview ul {
         @apply list-disc py-1 pl-10 m-2;

@@ -20,20 +20,22 @@ Before you can use a function, you must first **define** it. In Python, you use 
 **Example Code:**
 
 ```python
-# A simple function to greet the user
-def greet_user():
-    print("Hello, Python learner!")
-    print("Welcome to the world of functions.")
 
-# Calling the function to execute the code inside it
-greet_user()
+# Function Body.
+def greet():
+    print('Welcome to Python Function')
+    print('Function is used for code reusibility.')
+
+# Calling the function.
+greet()
 ```
 
 **Output:**
 
 ```
-Hello, Python learner!
-Welcome to the world of functions.
+
+Welcome to Python Function
+Function is used for code reusibility.
 ```
 
 ---
@@ -62,38 +64,44 @@ You can provide a default value for a parameter directly in the function definit
 **Example Code:**
 
 ```python
-def describe_pet(pet_name, animal_type='dog'):
-    """Describes a pet with its name and type, with a default animal type."""
-    print(f"I have a {animal_type}.")
-    print(f"Its name is {pet_name.title()}.")
 
-# Using a positional argument for pet_name, and the default for animal_type
-print("Using default argument:")
-describe_pet('willie')
+# Positional Argument, Keyword Argument and Default Parameter.
 
-# Overriding the default value using a positional argument
-print("\nOverriding the default:")
+# A Function with positional, and default parameters.
+def describe_pet(pet_name, pet_type='dog'):
+    print(f'I have a lovely {pet_type}.\nIts name is {pet_name}.\n\n')
+
+# Function calling with positional arguments.
+print('Calling with positional arguments.')
 describe_pet('harry', 'hamster')
 
-# Using keyword arguments (order doesn't matter, can also override default)
-print("\nUsing keyword arguments:")
-describe_pet(animal_type='cat', pet_name='whiskers')
+# Function calling with keyword arguments.
+print('Calling with keyword arguments.')
+describe_pet(pet_name='Newton', pet_type='cat')
+
+# Function calling using default argument.
+print('Calling using default argument.')
+describe_pet('Tupu')
 ```
 
 **Output:**
 
 ```
-Using default argument:
-I have a dog.
-Its name is Willie.
+ __
+Calling with positional arguments.
+I have a lovely hamster.
+Its name is harry.
 
-Overriding the default:
-I have a hamster.
-Its name is Harry.
 
-Using keyword arguments:
-I have a cat.
-Its name is Whiskers.
+Calling with keyword arguments.
+I have a lovely cat.
+Its name is Newton.
+
+
+Calling using default argument.
+I have a lovely dog.
+Its name is Tupu.
+
 ```
 
 ### A Word of Caution: Mutable Default Arguments
@@ -103,12 +111,15 @@ A common pitfall with default arguments is using a **mutable** object like a lis
 **Example of the Problem:**
 
 ```python
+# List as default parameter.
 def add_to_list_bad_practice(item, my_list=[]):
-    my_list.append(item)
-    return my_list
+	my_list.append(item)
+    	return my_list
+
 
 print(add_to_list_bad_practice('apple'))
 print(add_to_list_bad_practice('banana'))
+
 ```
 
 **Output:**
@@ -124,11 +135,27 @@ As you can see, the second time the function was called, it didn't start with a 
 To avoid this, you should use `None` as the default value and then check inside the function to see if a new mutable object needs to be created.
 
 ```python
+# List as default parameter.
+def add_to_list_bad_practice(item, my_list=[]):
+    my_list.append(item)
+    return my_list
+
 def add_to_list_good_practice(item, my_list=None):
     if my_list is None:
         my_list = []
+
     my_list.append(item)
     return my_list
+
+print(add_to_list_bad_practice('apple'))
+print(add_to_list_bad_practice('banana'))
+
+print(add_to_list_good_practice('apple'))
+print(add_to_list_good_practice('banana'))
+
+fruits = []
+print(add_to_list_good_practice('apple', fruits))
+print(add_to_list_good_practice('kiwi', fruits))
 
 print(add_to_list_good_practice('apple'))
 print(add_to_list_good_practice('banana'))
@@ -137,8 +164,11 @@ print(add_to_list_good_practice('banana'))
 **Output:**
 
 ```
+['apple', 'banana']
 ['apple']
 ['banana']
+['apple']
+['apple', 'kiwi']
 ```
 
 This is the correct way to handle optional mutable arguments, as it ensures a fresh, empty list is created for each function call where one isn't provided.
@@ -152,20 +182,21 @@ A function doesn't just have to perform an action; it can also give a result bac
 **Example Code:**
 
 ```python
-def add_numbers(num1, num2):
-    """Adds two numbers and returns the result."""
-    total = num1 + num2
-    return total  # The function sends the value of 'total' back
+# Function with Return Value.
+def add(x, y):
+    total = x + y
+    return total
 
-# Call the function and store the returned value in a variable
-sum_result = add_numbers(5, 7)
-print(f"The sum is: {sum_result}")
+print(add(2, 3))
+print(add(5, 8))
+
 ```
 
 **Output:**
 
 ```
-The sum is: 12
+5
+13
 ```
 
 ---

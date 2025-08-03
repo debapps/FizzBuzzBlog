@@ -39,29 +39,33 @@ A class is defined using the `class` keyword, followed by the class name (by con
 **Example Code:**
 
 ```python
-# A simple class named Book
+# Object-Oriented Programming Fundamental.
+
+# A simple class Book.
 class Book:
     pass
 
-# Creating two objects (instances) of the Book class
-book1 = Book()
-book2 = Book()
+# Creating the instances/objects of the class Book.
+b1 = Book()
+b2 = Book()
 
-# Printing the objects shows that they are distinct entities
-print(book1)
-print(book2)
+# Displaying book objects.
+print(f'\nBook1 - {b1}')
+print(f'\nBook2 - {b2}')
 
-# We can also check if they are the same object
-print(f"\nAre book1 and book2 the same object? {book1 is book2}")
+# Check if they are the same object.
+print(f'\nAre b1 and b2 the same object? {b1 is b2}')
+
 ```
 
 **Output:**
 
 ```
-<__main__.Book object at 0x...>
-<__main__.Book object at 0x...>
+Book1 - <__main__.Book object at 0x103436c30>
 
-Are book1 and book2 the same object? False
+Book2 - <__main__.Book object at 0x103436bd0>
+
+Are b1 and b2 the same object? False
 ```
 
 The output shows that `book1` and `book2` are two separate `Book` objects located at different memory addresses.
@@ -77,28 +81,32 @@ The `__init__` method takes at least one parameter, `self`, which is a reference
 **Example Code:**
 
 ```python
+# Class constractor: __init__() method in the class is used to initialize the object.
+
 class Book:
-    # The __init__ method initializes the object's attributes
+    # `self.title`, `self.author` and `self.price` are the attributes of object instances.
     def __init__(self, title, author, price):
-        # 'self.title', 'self.author', and 'self.price' are instance attributes
         self.title = title
         self.author = author
         self.price = price
 
-# Creating new Book objects now requires providing title, author, and price
-book1 = Book("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 10.99)
-book2 = Book("Pride and Prejudice", "Jane Austen", 8.50)
+# Creating Book objects with mandatory attributes: title, author and price.
+b1 = Book('The Alchemist', 'Paulo Coelho', 254.00)
+b2 = Book('The Kite Runner', 'Hosseini Khaled', 340.00)
+b3 = Book('The Book Thief', 'Zusak Markus', 236.00)
 
 # We can now access the attributes of each object
-print(f"Book 1: '{book1.title}' by {book1.author}, priced at ${book1.price}")
-print(f"Book 2: '{book2.title}' by {book2.author}, priced at ${book2.price}")
+print(f"Book 1: '{b1.title}' by {b1.author}, priced at Rs. {b1.price}")
+print(f"Book 2: '{b2.title}' by {b2.author}, priced at Rs. {b2.price}")
+print(f"Book 3: '{b3.title}' by {b3.author}, priced at Rs. {b3.price}")
 ```
 
 **Output:**
 
 ```
-Book 1: 'The Hitchhiker's Guide to the Galaxy' by Douglas Adams, priced at $10.99
-Book 2: 'Pride and Prejudice' by Jane Austen, priced at $8.5
+Book 1: 'The Alchemist' by Paulo Coelho, priced at Rs. 254.0
+Book 2: 'The Kite Runner' by Hosseini Khaled, priced at Rs. 340.0
+Book 3: 'The Book Thief' by Zusak Markus, priced at Rs. 236.0
 ```
 
 This demonstrates that each object has its own unique set of attributes.
@@ -114,46 +122,49 @@ All instance methods must have `self` as their first parameter.
 **Example Code:**
 
 ```python
+# Instance Methods and attributes.
+
 class Book:
+    # `self.title`, `self.author` and `self.price` are the attributes of object instances.
     def __init__(self, title, author, price):
         self.title = title
         self.author = author
         self.price = price
 
-    # An instance method that uses the object's attributes
+    # Instance methods.
     def get_details(self):
-        return f"'{self.title}' by {self.author}"
+        return f'{self.title} by {self.author}'
 
     def apply_discount(self, discount_percentage):
-        discount_amount = self.price * (discount_percentage / 100)
-        self.price -= discount_amount
-        print(f"Price after discount: ${self.price:.2f}")
+        discount = self.price * discount_percentage / 100
+        self.discounted_price = self.price - discount
+        return self.discounted_price
 
-# Create two book objects
-book1 = Book("The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 10.99)
-book2 = Book("Pride and Prejudice", "Jane Austen", 8.50)
+# Creating Book objects with mandatory attributes: title, author and price.
+b1 = Book('The Alchemist', 'Paulo Coelho', 254.00)
+b2 = Book('The Kite Runner', 'Hosseini Khaled', 340.00)
+b3 = Book('The Book Thief', 'Zusak Markus', 236.00)
 
-# Call the instance methods on each object
-print(f"Details for book1: {book1.get_details()}")
-print(f"Details for book2: {book2.get_details()}")
+# Call the instance method to get details of each book object.
+print(f'Book 1: {b1.get_details()}')
+print(f'Book 2: {b2.get_details()}')
+print(f'Book 3: {b3.get_details()}')
 
-print("\nApplying a 20% discount to book1:")
-book1.apply_discount(20)
-print(f"New price of book1 is: ${book1.price:.2f}")
+# Apply discount of 20% on book 2.
+print(f'20% Discounted price of "{b2.get_details()}" is Rs. {b2.apply_discount(20):.2f}')
+
 ```
 
 **Output:**
 
 ```
-Details for book1: 'The Hitchhiker's Guide to the Galaxy' by Douglas Adams
-Details for book2: 'Pride and Prejudice' by Jane Austen
-
-Applying a 20% discount to book1:
-Price after discount: $8.79
-New price of book1 is: $8.79
+Book 1: The Alchemist by Paulo Coelho
+Book 2: The Kite Runner by Hosseini Khaled
+Book 3: The Book Thief by Zusak Markus
+20% Discounted price of "The Kite Runner by Hosseini Khaled" is Rs. 272.00
 ```
 
-The `apply_discount` method modifies the specific `price` attribute of the `book1` object, showing how instance methods operate on an object's unique state.
+The `apply_discount` method calculates the `discounted_price` attribute of the `b2` object, showing how instance methods operate on an object's unique state.
 
 ---
 
@@ -174,7 +185,9 @@ Use a class method when you need a function that performs an action related to t
 **Example Code:**
 
 ```python
-from datetime import date
+# Class Method: Method that operates on Class itself, not on a specific instance.
+# Class method is defined using `@classmethod` decorator. It accepts `cls` as its first
+# parameter to reference to class.
 
 class Date:
     def __init__(self, day, month, year):
@@ -182,32 +195,32 @@ class Date:
         self.month = month
         self.year = year
 
-    def display(self):
-        return f"{self.day}/{self.month}/{self.year}"
+    # Instance Method.
+    def show(self):
+        return f'{self.day}/{self.month}/{self.year}'
 
-    # A class method that serves as an alternative constructor
+    # Class Method.
     @classmethod
-    def from_string(cls, date_string):
-        """Creates a Date object from a string in 'dd-mm-yyyy' format."""
-        day, month, year = map(int, date_string.split('-'))
-        # 'cls' refers to the Date class, so we can call the constructor on it
+    def from_string(cls, date_str):
+        day, month, year = map(int, date_str.split('-'))
         return cls(day, month, year)
 
-# Creating a regular instance
-date1 = Date(25, 12, 2024)
-print(f"Date 1 (regular instance): {date1.display()}")
+# Creating a regular instance.
+date1 = Date(14, 8, 1987)
+print(f'Regular Date - {date1.show()}')
 
-# Using the class method to create an instance from a string
-date_string = '31-01-2025'
-date2 = Date.from_string(date_string)
-print(f"Date 2 (from string): {date2.display()}")
+# Creating instance with class method.
+date2 = Date.from_string('13-03-2020')
+print(f'\nDate from string - {date2.show()}')
+
 ```
 
 **Output:**
 
 ```
-Date 1 (regular instance): 25/12/2024
-Date 2 (from string): 31/1/2025
+Regular Date - 14/8/1987
+
+Date from string - 13/3/2020
 ```
 
 This shows how `from_string` acts as a smart way to create a `Date` object without needing to call `__init__` directly, making the code cleaner and more flexible.
@@ -221,20 +234,39 @@ Use a static method when a function is logically related to the class but does n
 **Example Code:**
 
 ```python
+# Static Method: Static method is utility function those are logically grouped into a class,
+# but does not need to have access to instance's attributes or state.
+# It doesn't take `self` or `cls` as an argument. `@staticmethod` decorator is used to define
+# the static method.
+
 class Date:
     def __init__(self, day, month, year):
         self.day = day
         self.month = month
         self.year = year
 
-    def display(self):
-        return f"{self.day}/{self.month}/{self.year}"
+    # Instance Method.
+    def show(self):
+        return f'{self.day}/{self.month}/{self.year}'
 
-    # A static method to check for a leap year
+    # Class Method.
+    @classmethod
+    def from_string(cls, date_str):
+        day, month, year = map(int, date_str.split('-'))
+        return cls(day, month, year)
+
+    # Static Method.
     @staticmethod
     def is_leap_year(year):
-        """Returns True if the given year is a leap year, False otherwise."""
         return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
+
+# Creating a regular instance.
+date1 = Date(14, 8, 1987)
+print(f'Regular Date - {date1.show()}')
+
+# Creating instance with class method.
+date2 = Date.from_string('13-03-2020')
+print(f'\nDate from string - {date2.show()}\n')
 
 # We can call the static method directly from the class
 # without creating an instance.
@@ -245,6 +277,10 @@ print(f"Is 2023 a leap year? {Date.is_leap_year(2023)}")
 **Output:**
 
 ```
+Regular Date - 14/8/1987
+
+Date from string - 13/3/2020
+
 Is 2024 a leap year? True
 Is 2023 a leap year? False
 ```

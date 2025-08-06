@@ -24,17 +24,22 @@ In single inheritance, a class inherits from only one parent class.
 Imagine a company with a base `Employee` class. Different types of employees, like `Manager` and `Developer`, share some common traits (like name and salary) but also have unique responsibilities and methods.
 
 ```python
+# Single Inheritance: A class inherits attributes and methods from single base/parent class.
+
+# A company has base class: Employee. Different job roles like Developer, Manager classes
+# inherits attributes and methods from single base class Employee.
+
 class Employee:
     def __init__(self, name, salary):
         self.name = name
         self.salary = salary
 
-    def get_info(self):
-        return f"Name: {self.name}, Salary: ${self.salary}"
+    def show_info(self):
+        print(f'\nName: {self.name}, Salary: ${self.salary}')
 
-    def give_raise(self, amount):
-        self.salary += amount
-        return f"New salary for {self.name} is ${self.salary}"
+    def give_raise(self, percent):
+        self.salary += self.salary * percent / 100
+        print(f'New Salary for {self.name}: {self.salary}')
 
 class Developer(Employee):
     def __init__(self, name, salary, programming_language):
@@ -42,44 +47,57 @@ class Developer(Employee):
         self.programming_language = programming_language
 
     def write_code(self):
-        return f"{self.name} is writing code in {self.programming_language}."
+        print(f'{self.name} is writing code in {self.programming_language}')
 
 class Manager(Employee):
     def __init__(self, name, salary, department):
         super().__init__(name, salary)
         self.department = department
-        self.team = []
+        self.reportees = []
 
-    def add_team_member(self, employee):
-        self.team.append(employee)
-        return f"{employee.name} added to {self.name}'s team."
+    def add_reportee(self, employee):
+        self.reportees.append(employee)
+        print(f'{employee.name} is added to {self.name}\'s team.')
 
     def conduct_meeting(self):
-        return f"{self.name} is conducting a meeting for the {self.department} department."
+        print(f'{self.name} is conducting meetings for {self.department} department.')
 
-# Creating objects
-dev1 = Developer("Alice", 80000, "Python")
-mgr1 = Manager("Bob", 120000, "Engineering")
 
-print(dev1.get_info())
-print(dev1.write_code())
+if __name__ == '__main__':
+    d1 = Developer('Anuradha', 5000, 'Kotlin')
+    d2 = Developer('Tania', 3000, 'Cobol')
+    m1 = Manager('Bittu', 8000, 'IT')
 
-print("-" * 20)
+    d1.show_info()
+    d1.write_code()
 
-print(mgr1.get_info())
-print(mgr1.add_team_member(dev1))
-print(mgr1.conduct_meeting())
+    d2.show_info()
+    d2.write_code()
+
+    m1.show_info()
+    m1.add_reportee(d1)
+    m1.add_reportee(d2)
+    m1.conduct_meeting()
+
+    d2.give_raise(10)
 ```
 
 **Output:**
 
 ```
-Name: Alice, Salary: $80000
-Alice is writing code in Python.
---------------------
-Name: Bob, Salary: $120000
-Alice added to Bob's team.
-Bob is conducting a meeting for the Engineering department.
+
+ Name: Anuradha, Salary: $5000
+ Anuradha is writing code in Kotlin
+
+ Name: Tania, Salary: $3000
+ Tania is writing code in Cobol
+
+ Name: Bittu, Salary: $8000
+ Anuradha is added to Bittu's team.
+ Tania is added to Bittu's team.
+ Bittu is conducting meetings for IT department.
+ New Salary for Tania: 3300.0
+
 ```
 
 ### 1.2 Multiple Inheritance
@@ -91,94 +109,124 @@ Multiple inheritance allows a class to inherit from more than one parent class.
 A `SmartPhone` can be seen as a device that has the capabilities of both a `Phone` (making calls) and a `Computer` (running applications).
 
 ```python
-class Phone:
-    def make_call(self, number):
-        return f"Calling {number}..."
+# Multiple Inheritance: A class inherits attributes and methods
+ # from multiple base/parent classes.
 
-    def send_sms(self, number, message):
-        return f"Sending SMS to {number}: '{message}'"
+ # A Smartphone is a device that has the capabilities of both a traditional phone for calling
+ # and a computer for running applications.
 
-class Computer:
-    def run_application(self, app_name):
-        return f"Running application '{app_name}'..."
+ class Phone:
+     def make_calls(self, number):
+         print(f'Calling to {number} ...')
 
-    def connect_wifi(self):
-        return "Connected to Wi-Fi."
+     def send_message(self, number, message):
+         print(f'Message send to {number}: \n{message}')
 
-class SmartPhone(Phone, Computer):
-    def __init__(self, brand, model):
+ class Computer:
+     def run_application(self, app):
+         print(f'Running Application - {app}')
+
+     def connect_wifi(self):
+         print(f'Connected to Wi-Fi.')
+
+ class SmartPhone(Phone, Computer):
+     def __init__(self, brand, model):
         self.brand = brand
         self.model = model
 
-    def get_info(self):
-        return f"Brand: {self.brand}, Model: {self.model}"
+     def show(self):
+         print(f'\nSmartphone Brand: {self.brand} Model: {self.model}')
 
-# Creating an object
-my_smartphone = SmartPhone("Samsung", "Galaxy S23 Ultra")
 
-print(my_smartphone.get_info())
-print(my_smartphone.make_call("123-456-7890"))
-print(my_smartphone.run_application("Google Maps"))
-print(my_smartphone.connect_wifi())
+ if __name__ == '__main__':
+     my_smartphone = SmartPhone('Iphone', '13 Pro')
+
+     my_smartphone.show()
+     my_smartphone.connect_wifi()
+     my_smartphone.run_application('YouTube')
+     my_smartphone.make_calls('913-003-8722')
+     my_smartphone.send_message('612-987-2345', 'I love you!')
+
 ```
 
 **Output:**
 
 ```
-Brand: Samsung, Model: Galaxy S23 Ultra
-Calling 123-456-7890...
-Running application 'Google Maps'...
+Smartphone Brand: Iphone Model: 13 Pro
 Connected to Wi-Fi.
+Running Application - YouTube
+Calling to 913-003-8722 ...
+Message send to 612-987-2345:
+I love you!
 ```
 
 ## 2\. Polymorphism and Method Overriding
 
-**Polymorphism** means "many forms." It allows different objects to respond to the same method call in their own specific way. This is often achieved through **Method Overriding**, where a subclass provides its own implementation of a method already defined in its superclass.
+**Polymorphism** means "many forms." It allows different objects to respond to the same method call in their own specific way. It means a single function or method name can have different implementations depending on the object it's called on.
+
+Python achieve the polymorphism through **Method Overriding**. It's when a subclass provides a specific implementation of a method that is already defined in its parent class. When you call the method on an object of the subclass, Python executes the subclass's version instead of the parent class's version.
 
 **Realistic Problem: Calculating Area of Different Geometric Shapes**
 
 A program needs to calculate the area of various shapes. While the concept of "area" is the same, the calculation formula is different for a rectangle and a circle.
 
 ```python
-import math
+# Polymorphism: It means "many forms". It allows objects of different classes to be
+# treated as objects of a common superclass. It means a single function or method name can
+# have different implementations depending on the object it's called on.
+
+# Method overriding is the primary mechanism for achieving polymorphism in Python.
+# It's when a subclass provides a specific implementation of a method
+# that is already defined in its parent class.
+# When you call the method on an object of the subclass,
+# Python executes the subclass's version instead of the parent class's version.
+
+from math import pi
 
 class Shape:
+    def __init__(self, name):
+        self.name = name
+
+    def get_name(self):
+        return self.name
+
     def area(self):
-        raise NotImplementedError("Subclass must implement abstract method.")
+        raise NotImplementedError('The child class has to implement the method.')
 
 class Rectangle(Shape):
-    def __init__(self, width, height):
+    def __init__(self, name, width, height):
+        super().__init__(name)
         self.width = width
         self.height = height
 
-    def area(self): # Method overriding
+    def area(self):
         return self.width * self.height
 
 class Circle(Shape):
-    def __init__(self, radius):
+    def __init__(self, name, radius):
+        super().__init__(name)
         self.radius = radius
 
-    def area(self): # Method overriding
-        return math.pi * self.radius ** 2
+    def area(self):
+        return pi * pow(self.radius, 2)
 
-def calculate_shape_area(shape_object):
-    """Function that can take any shape object and call its area method."""
-    print(f"The area of the shape is: {shape_object.area():.2f}")
+def calculate_area(shape):
+    print(f'\nArea of the {shape.get_name()}: {shape.area():.2f}')
 
-# Creating objects
-my_rectangle = Rectangle(5, 10)
-my_circle = Circle(7)
+if __name__ == '__main__':
+    r = Rectangle('Rectangle', 20, 5)
+    c = Circle('Circle', 7)
 
-# Demonstrating polymorphism
-calculate_shape_area(my_rectangle)
-calculate_shape_area(my_circle)
+    calculate_area(r)
+    calculate_area(c)
 ```
 
 **Output:**
 
 ```
-The area of the shape is: 50.00
-The area of the shape is: 153.94
+Area of the Rectangle: 100.00
+
+Area of the Circle: 153.94
 ```
 
 ## 3\. Encapsulation and Access Modifiers (Convention)
@@ -198,84 +246,117 @@ Python doesn't have strict keywords like `public`, `private`, or `protected` as 
 A user profile has certain data (like `username`) that can be public. Other data, like a password, should be protected to indicate it's for internal use. Crucially, sensitive information like a credit card number must be strongly discouraged from direct external access.
 
 ```python
+# Encapsulation: Core OOP priciple that bundles data attributes and methods into a single unit
+# called class. Python does not use strict public, protected and private members, instead, it
+# uses naming convension to denote those attribute.
+
+# public - Does not start with underscore (_). This can be accessed ourside the class,
+# using object.
+# protected - starts with a underscore (_). This can be accessed in class and subclass only.
+# private - starts with double underscore (__). Python's interpreter automatically performs
+# a process called name mangling, where it changes the name of the member
+# to _ClassName__private_member
+
 class UserProfile:
     def __init__(self, username, password, token, credit_card_number):
-        # Public member: accessible from anywhere
+        # Public member.
         self.username = username
 
-        # Protected member (by convention): intended for internal use
+        # Protected member.
         self._password = password
 
-        # Private member (name-mangled): strongly discourages external access
-        self.__credit_card = credit_card_number
+        # Private member.
         self.__access_token = token
+        self.__credit_card_number = credit_card_number
 
-    def get_public_info(self):
-        """A public method to access some public information."""
-        return f"Username: {self.username}"
+    # This shows the public member.
+    def show_user(self):
+        print(f'\nUser Name: {self.username}')
 
-    def _get_protected_info(self):
-        """A protected method for internal use, e.g., for subclasses."""
-        return f"Password (hashed): {hash(self._password)}"
+    # This returns the protected member.
+    def get_password_hash(self):
+        return hash(self._password)
 
-    def login(self, entered_password):
-        """A public method that interacts with protected and private data."""
-        if entered_password == self._password:
-            # Within the class, we can freely access protected and private members
-            return f"Login successful. Your access token is {self.__access_token}."
-        return "Login failed."
+    def login(self, password_entered):
+        if self._password == password_entered:
+            print(f'\nLogin successful. You can use access token - {self.__access_token}')
+        else:
+            print(f'\nPlease login with correct creadentials.')
 
-# Creating a user profile object
-user1 = UserProfile("john_doe", "my_secret_pass", "abc-123", "1234-5678-9012-3456")
+if __name__ == '__main__':
 
-# --- Accessing Public Members (Recommended) ---
-print(user1.get_public_info())
+    user1 = UserProfile('bittu@email.com', 'my_secret_pass', 'abc-1234', '8876-2234-1123')
 
-# --- Accessing Protected Members (Discouraged, but possible) ---
-print(f"Direct access to protected password: {user1._password}")
+    user1.show_user()
+    user1.get_password_hash()
+    user1.login('Wrong_password')
+    user1.login('my_secret_pass')
 
-# --- Accessing Private Members (Blocked) ---
-try:
-    print(user1.__credit_card)
-except AttributeError as e:
-    print(f"\nAttempted to access private member: {e}")
+    try:
+        print(f'Credit Card No.: {user1.__credit_card_number}')
+    except AttributeError as e:
+        print(f'\nPrivate member access error! {e}')
 
-# --- A Public Method accessing Private Members (Recommended) ---
-print(f"\n{user1.login('wrong_password')}")
-print(f"{user1.login('my_secret_pass')}")
-
-# --- Accessing Private Members via Name Mangling (Avoid this!) ---
-print("\n--- WARNING: Bypassing Encapsulation (Bad Practice) ---")
-print(f"Accessing private member via mangled name: {user1._UserProfile__access_token}")
+    # Bad convension.
+    print(f'Credit Card No.: {user1._UserProfile__credit_card_number}')
 ```
 
 **Output:**
 
 ```
-Username: john_doe
-Direct access to protected password: my_secret_pass
+User Name: bittu@email.com
 
-Attempted to access private member: 'UserProfile' object has no attribute '__credit_card'
+Please login with correct creadentials.
 
-Login failed.
-Login successful. Your access token is abc-123.
+Login successful. You can use access token - abc-1234
 
---- WARNING: Bypassing Encapsulation (Bad Practice) ---
-Accessing private member via mangled name: abc-123
+Private member access error! 'UserProfile' object has no attribute '__credit_card_number'
+Credit Card No.: 8876-2234-1123
 ```
 
 ## 4\. Abstract Classes and Interfaces (using `abc` module)
 
-**Abstract Classes** cannot be instantiated directly and are meant to be a blueprint for other classes. They contain **abstract methods** that are declared but not implemented in the base class. Subclasses must implement these methods. This enforces a common "contract" or interface.
+**Abstruct Base Class**
+
+-   Abstruct base class is the blue print of the other subclass.
+-   Abstruct base class cannot be instantiated, i.e., the object of the abstruct class cannot be created.
+-   Abstruct class can only be inherited to other subclasses.
+
+**Abstruct Method**
+
+-   Abstruct method must be overriden in the subclass.
+-   It shares common blue print of the methods in the subclass.
+
+**Implementation in Python**
+
+-   In Python, abstruct base class and abstruct methods are implemented through `abc` module.
+-   In `abc` module, the `ABC` class is used to define abstruct class.
+-   In `abc` module, the `@abstructmethod` decorator is used to define abstruct method.
 
 **Realistic Problem: Defining a Database Connector Interface**
 
 A software application needs to connect to different types of databases (MySQL, PostgreSQL). We can create an abstract base class `DatabaseConnector` to ensure that all specific connectors have the same essential methods, such as `connect()`, `disconnect()`, and `execute_query()`.
 
 ```python
+# Abstruct Base Class and Abstruct Method.
+
+# -   Abstruct base class is the blue print of the other subclass.
+# -   Abstruct base class cannot be instantiated, i.e., the object of the abstruct
+#     class cannot be created.
+# -   Abstruct class can only be inherited to other subclasses.
+# -   Abstruct method must be overriden in the subclass.
+# -   It shares common blue print of the methods in the subclass.
+
+# Implementation in Python
+
+# -   In Python, abstruct base class and abstruct methods are implemented through `abc` module.
+# -   In `abc` module, the `ABC` class is used to define abstruct class.
+# -   In `abc` module, the `@abstructmethod` decorator is used to define abstruct method.
+
 from abc import ABC, abstractmethod
 
-class DatabaseConnector(ABC):
+class DataBaseConnector(ABC):
+
     @abstractmethod
     def connect(self):
         pass
@@ -285,140 +366,151 @@ class DatabaseConnector(ABC):
         pass
 
     @abstractmethod
-    def execute_query(self, query):
+    def execute(self, query):
         pass
 
-class MySQLConnector(DatabaseConnector):
+class MySQLConnector(DataBaseConnector):
+
     def connect(self):
-        print("Connecting to MySQL database...")
+        print(f'\nConnected to MySQL Database...')
 
     def disconnect(self):
-        print("Disconnecting from MySQL database.")
+        print(f'Disconnected from MySQL Database.')
 
-    def execute_query(self, query):
-        print(f"Executing MySQL query: {query}")
-        return "Result from MySQL"
+    def execute(self, query):
+        print(f'Executing MySQL query - {query}')
+        return 'Result from MySQL'
 
-class PostgreSQLConnector(DatabaseConnector):
+class ProsgreSQLConnector(DataBaseConnector):
+
     def connect(self):
-        print("Connecting to PostgreSQL database...")
+        print(f'\nConnected to ProsgreSQL Database...')
 
     def disconnect(self):
-        print("Disconnecting from PostgreSQL database.")
+        print(f'Disconnected from ProsgreSQL Database.')
 
-    def execute_query(self, query):
-        print(f"Executing PostgreSQL query: {query}")
-        return "Result from PostgreSQL"
+    def execute(self, query):
+        print(f'Executing ProsgreSQL query - {query}')
+        return 'Result from ProsgreSQL'
 
-def run_database_operations(connector):
+def run_db_operation(connector):
     connector.connect()
-    result = connector.execute_query("SELECT * FROM users")
-    print(f"Received: {result}")
+    result = connector.execute('SELECT * FROM user;')
+    print(f'Received: {result}')
     connector.disconnect()
 
-# We can't instantiate the abstract class directly
-# db = DatabaseConnector() # This would raise a TypeError
+if __name__ == '__main__':
+    mysql = MySQLConnector()
+    postgresql = ProsgreSQLConnector()
 
-mysql_conn = MySQLConnector()
-postgres_conn = PostgreSQLConnector()
-
-print("--- Running operations with MySQL connector ---")
-run_database_operations(mysql_conn)
-
-print("\n--- Running operations with PostgreSQL connector ---")
-run_database_operations(postgres_conn)
+    run_db_operation(mysql)
+    run_db_operation(postgresql)
 ```
 
 **Output:**
 
 ```
---- Running operations with MySQL connector ---
-Connecting to MySQL database...
-Executing MySQL query: SELECT * FROM users
+Connected to MySQL Database...
+Executing MySQL query - SELECT * FROM user;
 Received: Result from MySQL
-Disconnecting from MySQL database.
+Disconnected from MySQL Database.
 
---- Running operations with PostgreSQL connector ---
-Connecting to PostgreSQL database...
-Executing PostgreSQL query: SELECT * FROM users
-Received: Result from PostgreSQL
-Disconnecting from PostgreSQL database.
+Connected to ProsgreSQL Database...
+Executing ProsgreSQL query - SELECT * FROM user;
+Received: Result from ProsgreSQL
+Disconnected from ProsgreSQL Database.
 ```
 
 ## 5\. Magic Methods (Dunder Methods)
 
 Magic methods, also known as "dunder methods," are special methods in Python that are automatically invoked by Python for certain operations. They allow you to define how objects of your class behave with built-in functions and operators.
 
-**Realistic Problem: A Custom Document Class**
+**Realistic Problem: A Custom BlogPost Class**
 
-We want a `Document` class that behaves naturally with built-in functions like `len()` and operators like `+` for concatenation, and `==` for comparison.
+We want a `BlogPost` class that behaves naturally with built-in functions like `len()` and operators like `+` for concatenation, and `==` for comparison.
 
 ```python
-class Document:
+# Magic Methods (Dunder Methods) - automatically invokes by Python interpreter for certain operations.
+
+# __str__() - invoked by print() or str() method.
+# __repr__() - invoked by repr() method.
+# __len__() - invoked by len() method.
+# __add__() - invoked by + operator.
+# __eq__() - invoked by == operator.
+
+class BlogPost:
     def __init__(self, title, content):
-        self.title = title
-        self.content = content
+        self._title = title
+        self._content = content
 
     def __str__(self):
-        """Called by print() and str(). User-friendly representation."""
-        return f"Document: '{self.title}'"
+        return f'\nBlog: {self._title}'
 
     def __repr__(self):
-        """Called by repr(). Unambiguous representation for developers."""
-        return f"Document(title='{self.title}', content='{self.content}')"
+        return f'BlogPost(title = {self._title}, content = {self._content})'
 
     def __len__(self):
-        """Called by len(). Returns the number of words in the document."""
-        return len(self.content.split())
+        '''Returns the number of words in the content.'''
+        return len(self._content.split())
 
-    def __add__(self, other):
-        """Called by the + operator. Concatenates two documents."""
-        if isinstance(other, Document):
-            new_title = f"{self.title} & {other.title}"
-            new_content = f"{self.content} {other.content}"
-            return Document(new_title, new_content)
-        raise TypeError("Can only add another Document object.")
+    def __add__(self, blog):
+        '''Returns the new blog post concatenating title and content of two blogposts.'''
+        if isinstance(blog, BlogPost):
+            new_title = self._title + blog._title
+            new_content = self._content + blog._content
+            return BlogPost(new_title, new_content)
+        else:
+            raise('ERROR: Not able to add object other than BlogPost type.')
 
-    def __eq__(self, other):
-        """Called by the == operator. Compares documents by content."""
-        if isinstance(other, Document):
-            return self.content == other.content
-        return False
+    def __eq__(self, blog):
+        '''Check title and content of two blogposts are same.'''
+        if isinstance(blog, BlogPost):
+            return self._title == blog._title and self._content == blog._content
+        else:
+            raise('ERROR: Not able to compare object other than BlogPost type.')
 
-# Creating document objects
-doc1 = Document("Python OOP", "This is a tutorial on Python OOP.")
-doc2 = Document("Python Basics", "This covers fundamental concepts.")
-doc3 = Document("Python OOP", "This is a tutorial on Python OOP.")
 
-# Using magic methods
-print(doc1)
-print(repr(doc1))
-print(f"Number of words in doc1: {len(doc1)}")
+def main():
+    blog1 = BlogPost('Functions in Python', 'Functions are used for code reusibility.')
+    blog2 = BlogPost('Generators in Python', 'Generators in Python uses for memory efficiency.')
+    blog3 = BlogPost('Generators in Python', 'Generators in Python uses for memory efficiency.')
 
-print("-" * 20)
+    print(blog1)
+    print(repr(blog1))
+    print(f'Number of words in content - {len(blog1)}')
+    print(blog2)
+    print(repr(blog2))
+    print(f'Number of words in content - {len(blog2)}')
 
-# Concatenating documents
-doc_combined = doc1 + doc2
-print(f"Combined document title: {doc_combined.title}")
-print(f"Total words in combined doc: {len(doc_combined)}")
+    print('-' * 20)
 
-print("-" * 20)
+    print(f'blog1 == blog2: {blog1 == blog2}')
+    print(f'blog2 == blog3: {blog2 == blog3}')
 
-# Comparing documents
-print(f"doc1 == doc2: {doc1 == doc2}")
-print(f"doc1 == doc3: {doc1 == doc3}")
+    new_blog = blog1 + blog2
+    print(new_blog)
+    print(repr(new_blog))
+
+
+if __name__ == '__main__':
+    main()
+
 ```
 
 **Output:**
 
 ```
-Document: 'Python OOP'
-Document(title='Python OOP', content='This is a tutorial on Python OOP.')
-Number of words in doc1: 7
+Blog: Functions in Python
+BlogPost(title = Functions in Python, content = Functions are used for code reusibility.)
+Number of words in content - 6
+
+Blog: Generators in Python
+BlogPost(title = Generators in Python, content = Generators in Python uses for memory efficiency.)
+Number of words in content - 7
 --------------------
-Combined document title: Python OOP & Python Basics
-Total words in combined doc: 12
---------------------
-doc1 == doc2: False
-doc1 == doc3: True
+blog1 == blog2: False
+blog2 == blog3: True
+
+Blog: Functions in PythonGenerators in Python
+BlogPost(title = Functions in PythonGenerators in Python, content = Functions are used for code reusibility.Generators in Python uses for memory efficiency.)
 ```
